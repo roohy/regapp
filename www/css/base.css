@@ -1,0 +1,11 @@
+
+.center-floating{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#login-form{
+    width: 100%;
+    padding: 2em;
+    margin-top: 20%;
+}
