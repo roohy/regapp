@@ -1,0 +1,17 @@
+#login-form{
+    width: 80%;
+    padding: 2em;
+    margin-top: 10%;
+}
+
+#login-form a.btn{
+    color: #F1C40F;
+}
+#login-form img{
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+#login-form h9{
+    margin-bottom: 2em;
+}
