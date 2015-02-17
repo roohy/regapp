@@ -1,9 +1,25 @@
 
+html,body{
+    height: 100%;
+}
+
 .center-floating{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-form input[type=text]{
-    font-size: 3em;
+
+.navbar{
+    
 }
+.navbar-brand img{
+    height: 100%;
+}
+
+
+/*
+@-webkit-viewport{width:device-width;}
+@-moz-viewport{width:device-width;}
+@-o-viewport{width:device-width;}
+@viewport{width:device-width;}
+@-ms-viewport{width:device-width;}*/
