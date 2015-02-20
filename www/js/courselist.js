@@ -46,9 +46,12 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        $('#login-button').click(app.loginClick);
+        $('').click(function(event){
+            app.courseClick(event);
+        });
     },
-    loginClick: function(){
-        //TODO: We should call the login function with login-name and login-pass  and make labels
+    courseClick: function(event){
+        $(event.target).children(".course-details").slideToggle("slow",function(){return;});
+        //TODO: set something to store the visibility of the damn thing
     }
 };
