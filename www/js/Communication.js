@@ -6,6 +6,7 @@ $(function() {
     window.localStorage.clear() ; 
     localStorage['TERM'] = '20151' ; 
     saveDepartmentToDB('FAPR') ; 
+    saveDepartmentToDB('FAPT');
     $("#setarehTest").html(JSON.stringify(window.localStorage['FAPR'])) ; 
     
 });
