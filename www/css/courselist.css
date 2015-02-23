@@ -1,0 +1,13 @@
+.course-card{
+    border-color: #d2d2d2;
+    box-shadow: 0 1px 0 #cfcfcf;
+    border-radius: 3px;
+}
+.class-details{
+   /* display: none;*/
+    
+}
+.course-title{
+    font-weight: bold;
+    display: block;
+}

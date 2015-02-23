@@ -1,8 +1,17 @@
-table {
-    border="1"; 
-    border-collapse: collapse;
-}
 th {
     text-align: center;
     padding: 15px;
+}
+td1 {
+    btn-group {
+        display: block;
+        vertical-align: bottom;
+    }
+}
+#EE499 {
+    min-height: 120px;   
+}
+
+#CSCI570 {
+    min-height: 60px;   
 }

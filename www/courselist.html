@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <script src="semantic/semantic.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="flatui/dist/css/vendor/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="flatui/dist/css/flat-ui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.4.5.css"/>
+        <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/courselist.css"/>
+        <title>Hello World</title>
+    </head>
+    <body  class="palette-pomegranate">
+       <div id="container"  data-role="page">
+           <div data-role="panel" id="nav-panel">
+                haha
+           </div>
+           <div data-role="content" class="container-fluid">
+               <nav class="navbar navbar-default" role="navigation">
+                   <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a  class="navbar-brand" href="#nav-panel">
+                                <img alt="Brand" src="img/usc_shield.png">
+                            </a>
+                       </div>
+                   </div>
+               </nav>
+               <div id="course-list">
+                   <div class="course-card panel row-fluid">
+                       <div class="panel-heading course-heading">
+                            <h9 class="course-title">Introduction To programming</h9>
+                            <span class="label label-default">CSCI-101 L</span>
+                            <span class="label label-info">3 Units</span>
+                            <span class="pull-right glyphicon glyphicon-plus"></div>
+                           </div>
+                        <div class="class-details">
+                            <p class="class-description">
+                                30399-This section of CSCI 101 is 
+                                reserved for non-majors. It is a 
+                                terminal course in basic programming 
+                                and does not prepare students for 
+                                continuing on to CSCI 104.
+                            </p>
+                            <div class="class-sections">
+                                <div class="class-section row">
+                                    <div class="col-xs-2">Lec</div>
+                                    <div class="col-xs-2">-----fdsdfsdfsdfsdfsdlkjsdljljds</div>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div> 
+        
+        <script src="flatui/dist/js/vendor/jquery.min.js"></script>
+        <script src="jqm/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/courses.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+
+    </body>
+</html>
