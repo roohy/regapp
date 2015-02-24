@@ -3,10 +3,12 @@ var comm = comm | {} ;
 $(function() {
     console.log( "ready!" );
    // alert('something');
-    window.localStorage.clear() ; 
-    localStorage['TERM'] = '20151' ; 
-    saveDepartmentToDB('FAPR') ; 
-    saveDepartmentToDB('FAPT');
+    
+ //   localStorage.clear() ;
+    localStorage['TERM'] = '20151' ;
+    console.log('local Storage cleared' ) ; 
+  //  saveDepartmentToDB('FAPR') ; 
+//    saveDepartmentToDB('FAPT');
     $("#setarehTest").html(JSON.stringify(window.localStorage['FAPR'])) ; 
     
 });
@@ -25,18 +27,28 @@ function getSessions(opt_sessionID, opt_successFunction , opt_waitFunction){
     getFromServer('Sessions/' + opt_sessionID , opt_successFunction , opt_waitFunction);
 }
     
-function getSchools(opt_successFunction , opt_waitFunction){
-    getFromServer('Schools/' , opt_successFunction , opt_waitFunction); 
+function getSchools(successFunction , opt_waitFunction){
+    var sch = localStorage['SCHOOLS'] ; 
+    if ( sch == undefined)
+        getFromServer('Schools/' , successFunction , opt_waitFunction);
+    else
+        successFunction(JSON.parse(sch)); 
 }
     
-function getDepartments(school_code , opt_successFunction , opt_waitFunction){
-    getFromServer('Schools/' + school_code, opt_successFunction , opt_waitFunction) ; 
+function getDepartments(school_code , successFunction , opt_waitFunction , opt_additionalInfo){
+  //  console.log('we are in getDepartments in communication and additional info is ' , opt_additionalInfo) ; 
+    var depts = localStorage['SCHOOL_' + school_code] ; 
+    if (depts == undefined)
+        getFromServer('Schools/' + school_code, successFunction , opt_waitFunction , opt_additionalInfo) ;
+    else
+        successFunction(JSON.parse(depts) , opt_additionalInfo);
 }
     
 function getCourses(term, opt_options , opt_successFunction , opt_waitFunction , opt_additionalInfo){
     options = opt_options || "" ;     
     getFromServer('Courses/' + term +'/'+ options, opt_successFunction , opt_waitFunction , opt_additionalInfo) ;
 }
+
 
 function saveDepartmentToDB(department_code){
     console.log('saving  ' , department_code,  '  to dB'); 
@@ -45,6 +57,7 @@ function saveDepartmentToDB(department_code){
     term = localStorage.getItem('TERM'); 
     if (window.localStorage.getItem(department_code)!=null){
         console.log('inja hastim yanipeida shde');
+        alert('peida shod too local storage :DDDDD ') ; 
         return ; 
     }
     console.log('raftim ke course haro begirim :)' ); 
@@ -56,7 +69,7 @@ function fetchSections(courses , depart){
     globalA = courses ;
     console.log(courses);
     console.log("before trying to json the resultss "); 
-    alert('asaaaaaan in bade ye consoli bayd bashe ');
+  //  alert('asaaaaaan in bade ye consoli bayd bashe ');
     window.localStorage[depart] = JSON.stringify(courses);
     console.log("after it!!!");
     var term = localStorage.TERM; 
@@ -107,6 +120,7 @@ function getFromServer(url , successFunction , waitFunction , opt_additionalInfo
         .done(function( msg ) {
         })
         .success(function(data){
+        //    console.log('we are in the success function and additional info is ' , opt_additionalInfo);  
             successFunction(data, opt_additionalInfo);
         })
         .error(function(data){
