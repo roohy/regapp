@@ -34,24 +34,36 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        
+        //alert("hahaha");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
+        /*var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+        */
         console.log('Received Event: ' + id);
-        $('').click(function(event){
-            app.courseClick(event);
+        $('.course-card').click(function(event){
+            //app.courseClick(event);
         });
     },
     courseClick: function(event){
+        //alert("hahaha");
         $(event.target).children(".course-details").slideToggle("slow",function(){return;});
         //TODO: set something to store the visibility of the damn thing
     }
 };
+
+function courseClick(event){
+        //alert();
+        $(event).children(".class-details").slideToggle(1000,function(){return;});
+}
+
+$(function(){
+    $('.course-card').click(function(event){
+        courseClick(this);
+    });
+});
