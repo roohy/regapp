@@ -2,16 +2,22 @@ th {
     text-align: center;
     padding: 15px;
 }
-td1 {
-    btn-group {
-        display: block;
-        vertical-align: bottom;
-    }
+td {
+    vertical-align: center;
+    text-align: center;
+    width: 150px;
+    border-top: thin solid grey;
+    word-wrap: break-word;
 }
-#EE499 {
+#oneHour {
+    min-height: 60px;   
+}
+#oneHalfHour {
+    min-height: 90px;   
+}
+#twoHour {
     min-height: 120px;   
 }
-
-#CSCI570 {
-    min-height: 60px;   
+#threeHour {
+    min-height: 180px;   
 }
