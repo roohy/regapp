@@ -1,11 +1,20 @@
 $(function(){
     
-    getTerms(); 
+    getTerms(NaN , setTerms); 
     
 }); 
 
-function setTerms(data , ul_element){
-
+function setTerms(data){
+    if ( localStorage['ACTIVE_TERMS']== undefined)
+        localStorage['ACTIVE_TERMS'] = JSON.stringify(data);
+    var ul_element = $("#termList"); 
+    for ( var i in data){
+        var term = data[i] ; 
+        console.log('term is ' , term ) ; 
+        var li = $('<li><a href="#">' + term.DESCRIPTION + '</a></li>'); 
+        ul_element.append(li); 
+    }
+    ul_element.listview('refresh'); 
 }
 
 
