@@ -20,7 +20,48 @@
                <div data-role="header">
                     <h1>Filters</h1>
                </div>
-               <div data-role="content" class="ui-corner-all"></div>
+               <div data-role="content" class="ui-corner-all">
+                    <div class="ui-field-contain ui-mini" >
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Date: </legend>
+                            <input type="checkbox" name="checkbox-monday" id="checkbox-monday" class="custom">
+                            <label for="checkbox-monday">M</label>
+                            
+                            <input type="checkbox" name="checkbox-tuesday" id="checkbox-tuesday" class="custom">
+                            <label for="checkbox-tuesday">T</label>
+                            
+                            <input type="checkbox" name="checkbox-wednesday" id="checkbox-wednesday" class="custom">
+                            <label for="checkbox-wednesday">W</label>
+                            
+                            <input type="checkbox" name="checkbox-thursday" id="checkbox-thursday" class="custom">
+                            <label for="checkbox-thursday">Th</label>
+                            
+                            <input type="checkbox" name="checkbox-friday" id="checkbox-friday" class="custom">
+                            <label for="checkbox-friday">F</label>
+                            
+                            <input type="checkbox" name="checkbox-saturday" id="checkbox-saturday" class="custom">
+                            <label for="checkbox-saturday">Sa</label>
+                            
+                            <input type="checkbox" name="checkbox-sunday" id="checkbox-sunday" class="custom">
+                            <label for="checkbox-sunday">Su</label>
+                        </fieldset>
+                   </div>
+                                <div class=""></div>
+                                <div id="department-list">
+                                    <h6>Department Selection</h6>
+                                       <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
+                                            <div data-role="collapsible">
+                                                <h2>Viterbi School Of Eng</h2>
+                                                    <ul data-role="listview"  data-divider-theme="b">
+                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">CSCI Department</label></li>
+                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">Petroleom Engineering</label></li>
+                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">khar khar department</label></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+                                   </div>
+               </div>
            </div>
            <div data-role="panel" id="nav-panel" >
                 <div class="panel panel-default">
@@ -37,26 +78,6 @@
                <div class="panel panel-default">
                     <div class="panel-body">
                         Filters
-                        <div class="panel panel-default">
-                            
-                            <div class="panel-body">
-                                <div class=""></div>
-                                <div id="department-list">
-                                    <h6>Department Selection</h6>
-                                       <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
-                                            <div data-role="collapsible">
-                                                <h2>Viterbi School Of Eng</h2>
-                                                    <ul data-role="listview"  data-divider-theme="b">
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">CSCI Department</label></li>
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">Petroleom Engineering</label></li>
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">khar khar department</label></li>
-
-                                                </ul>
-                                            </div>
-                                       </div>
-                                   </div>
-                                </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -69,30 +90,6 @@
                     <h1 class="navbar-brand"><img src="img/usc_shield.png"> Courses </h1>
                    <a href="#nav-panel-right" data-icon="gear" class="ui-btn-right">Filters</a>
                 </div>
-               <!--<nav class="navbar navbar-default " role="navigation">
-                   <div class="container-fluid">
-                        <!--<div class="navbar-header">
-                            <a  class="navbar-brand" href="#nav-panel">
-                                <img alt="Brand" src="img/usc_shield.png">
-                            </a>
-                       </div>
-                       
-                        <div class="navbar-collapse  " >
-                            <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-                            <div class="navbar-right" id="advanced-search-button">
-                                haha<span class="fa fa-camera-retro"></span>
-                            </div>
-                            <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Search">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                              </form>
-                       </div>   
-                   </div>
-               </nav>-->
                <div id="course-list">
                    <div class="course-card panel row-fluid">
                        <div class="panel-heading course-heading">

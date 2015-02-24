@@ -49,6 +49,22 @@ var app = {
         $('#login-button').click(app.loginClick);
     },
     loginClick: function(){
+        app.showAlert("wrong");
+        alert("haha");
         //TODO: We should call the login function with login-name and login-pass  and make labels
+    },
+    showAlert: function(type){
+        var id;
+        if(type == "wrong"){
+            id = "#wrong-cred";
+        }
+        else{
+            id = "#no-connection";
+        }
+        $(id).slideDown(500, function(){
+            setTimeout(function(){
+                $(id).slideUp(500,function(){});
+            } , 2000);
+        });
     }
 };
