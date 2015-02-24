@@ -4,7 +4,6 @@ $(function(){
     
 });
 
-
 function setSchools(data){
     
     if ( localStorage['SCHOOLS']== undefined)
@@ -50,3 +49,5 @@ function setDepartments(data, ul_element){
             </ul>
     </div>
 </div>*/
+
+

@@ -97,7 +97,7 @@ function setSections(sections , info){
     k = sections['V_SOC_SECTION']; 
     console.log('sections of this course are ' , k);
     console.log('before adding the sections ' , a); 
-    a[index]['V_SOC_SECTION'] = k;
+    a[index]['V_SOC_SECTION']=k;
     localStorage[depart] = JSON.stringify(a); 
     //alert('vaisa inja');
     console.log('after adding the sections ' , a);
