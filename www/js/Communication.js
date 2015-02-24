@@ -17,9 +17,9 @@ function getSection(sectionID , opt_successFunction , opt_waitFunction){
     getFromServer('Sections/' + sectionID , opt_successFunction , opt_waitFunction) ; 
 }
 
-function getTerms(opt_termID, opt_successFunction , opt_waitFunction){
+function getTerms(opt_termID, opt_successFunction , opt_waitFunction , opt_additionalInfo){
     opt_termID = opt_termID || "" ; 
-    getFromServer('Terms/' + opt_termID , opt_successFunction , opt_waitFunction); 
+    getFromServer('Terms/' + opt_termID , opt_successFunction , opt_waitFunction , opt_additionalInfo); 
 }
                   
 function getSessions(opt_sessionID, opt_successFunction , opt_waitFunction){
