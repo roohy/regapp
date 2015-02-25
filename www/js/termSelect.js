@@ -5,7 +5,7 @@ $(function(){
         k = $(this); 
         localStorage.TERM = $(this).attr('term_code'); 
         window.location = ("./departments.html");
-        
+//        return false;
 });
     /*$('div').live('pagebeforeshow',function(){
         alert("I am killing it");
@@ -19,7 +19,7 @@ function setTerms(data){
     for ( var i in data){
         var term = data[i] ; 
 //        console.log('term is ' , term ) ; 
-        var li = $('<li><a href="departments.html" data-transition="slide">' + term.DESCRIPTION + '</a></li>');
+        var li = $('<li><a href="#" data-transition="slide">' + term.DESCRIPTION + '</a></li>');//departments.html
 //        console.log('li is now ' , li ) ; 
         li.attr('term_code' , term.TERM_CODE) ;
         
