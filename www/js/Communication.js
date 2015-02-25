@@ -2,14 +2,8 @@ var comm = comm | {} ;
 
 $(function() {
     console.log( "ready!" );
-   // alert('something');
  //   localStorage.clear() ;
 
- //   localStorage['TERM'] = '20151' ;
-    console.log('local Storage cleared' ) ; 
-
-//  saveDepartmentToDB('FAPR') ; 
-//    saveDepartmentToDB('FAPT');
     $("#setarehTest").html(JSON.stringify(window.localStorage['FAPR'])) ; 
     
 });
@@ -56,35 +50,34 @@ function getCourses(term, opt_options , opt_successFunction , opt_waitFunction ,
 }
 
 
-function saveDepartmentToDB(department_code){
+function saveDepartmentToDB(department_code , render){
+     
     console.log('saving  ' , department_code,  '  to dB'); 
-//    alert('bayad inja saving to db ro chap karde bashe');
-//    var term_depart = term.toString() + "_" + department_code.toString();
     term = localStorage.getItem('TERM'); 
     if (window.localStorage.getItem(department_code)!=null){
-        console.log('inja hastim yanipeida shde');
-        alert('peida shod too local storage :DDDDD ') ; 
+        console.log('peida shod too local storage :DDDDD ');
+        if (render == true){
+            renderCourses(department_code); 
+        }
         return ; 
     }
     console.log('raftim ke course haro begirim :)' ); 
-    getCourses(term, department_code, fetchSections , NaN , department_code) ;
+    
+    getCourses(term, department_code, fetchSections , NaN , {'depart':department_code , 'render' : render}) ;
 }
 
+counter = 0 ;
+counter2 = 0 ; 
 
-function fetchSections(courses , depart){
-    globalA = courses ;
-    console.log(courses);
-    console.log("before trying to json the resultss "); 
-  //  alert('asaaaaaan in bade ye consoli bayd bashe ');
+function fetchSections(courses , info){
+    var depart = info.depart ; 
     window.localStorage[depart] = JSON.stringify(courses);
-    console.log("after it!!!");
     var term = localStorage.TERM; 
-    console.log(window.localStorage[depart]); 
     for (var i =0 ; i< courses.length ; i++){
         var course_id = courses[i]['COURSE_ID'] ; 
-        console.log('fetching cestions for couse + ' + course_id );
-//        alert('ararrrr');
-         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i});
+       // console.log('fetching cestions for couse + ' + course_id );
+        counter ++ ; 
+         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i , 'render' : info.render});
     }
 }
 
@@ -93,20 +86,27 @@ function setSections(sections , info){
     globaInfo = info ; 
     var depart = info['depart'] ; 
     index = info['index'];
-    console.log('index is ' , index);
+ //   console.log('index is ' , index);
     a = window.localStorage[depart];
     a = JSON.parse(a);
-    console.log('paresed term_depart is' ,a  );
+//    console.log('paresed term_depart is' ,a  );
     
     
-    console.log('sections are ' , sections);
+//    console.log('sections are ' , sections);
     k = sections['V_SOC_SECTION']; 
-    console.log('sections of this course are ' , k);
-    console.log('before adding the sections ' , a); 
+  //  console.log('sections of this course are ' , k);
+//    console.log('before adding the sections ' , a); 
     a[index]['V_SOC_SECTION']=k;
     localStorage[depart] = JSON.stringify(a); 
     //alert('vaisa inja');
     console.log('after adding the sections ' , a);
+    counter2 ++; 
+    if ( counter2== counter){
+        alert('we are done fetching' ) ; 
+        if (info.render == true){
+            renderCourses(depart); 
+        }
+    }
 }
 
 function getFromServer(url , successFunction , waitFunction , opt_additionalInfo){

@@ -4,8 +4,8 @@ $(function(){
 //    department-list
     $(document).on('click', "#department-list li" , function() {
         k2 = $(this); 
-        k = $(this).attr('dept_code'); 
-        window.location = ("./courselist.html?dept=" + k); 
+        localStorage.DEPT_CODE = $(this).attr('dept_code'); 
+        window.location = ("./courselist.html"); 
 //        window.location="website/nextpage.jsp/param/{YOUR PARAMETER}";
 });
     
