@@ -21,3 +21,8 @@ td {
 #threeHour {
     min-height: 180px;   
 }
+.box {
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: hidden;
+}
