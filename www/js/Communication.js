@@ -57,7 +57,7 @@ function saveDepartmentToDB(department_code , render){
     if (window.localStorage.getItem(department_code)!=null){
         console.log('peida shod too local storage :DDDDD ');
         if (render == true){
-            renderCourses(department_code); 
+            renderCourses(JSON.parse(window.localStorage[department_code])); 
         }
         return ; 
     }
@@ -104,7 +104,7 @@ function setSections(sections , info){
     if ( counter2== counter){
         alert('we are done fetching' ) ; 
         if (info.render == true){
-            renderCourses(depart); 
+            renderCourses(a); 
         }
     }
 }

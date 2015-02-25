@@ -62,7 +62,7 @@ function courseClick(event){
         $(event).children(".class-details").slideToggle(1000,function(){return;});
 }
 
-function renderCourses(depart){
+function renderCourses(course_list){
     function getUnitString(mycourse){
         var min_units = mycourse.MIN_UNITS ; 
         var max_units = mycourse.MAX_UNITS ;
@@ -76,12 +76,14 @@ function renderCourses(depart){
             unitString = (parseFloat(min_units).toString()) + "-" + (parseFloat(max_units).toString()) + " Units";
         return unitString; 
     }
-    console.log('in rendering coursessssssss ' , depart ) ; 
-    mycourse_list = JSON.parse(localStorage[depart]); 
-        for ( var d in mycourse_list){
+    console.log('in rendering coursessssssss ' , course_list);
+    
+    $('#course-list').empty();
+//    mycourse_list = JSON.parse(localStorage[depart]); 
+        for ( var d in course_list){
             if (d>3)
                 return ; 
-            var course = mycourse_list[d] ; 
+            var course = course_list[d] ; 
             console.log(' rendering course : ' , course  ) ;
             var card = $('<div class="course-card panel row-fluid"></div>');
             var course_heading = $('<div class="panel-heading course-heading"></div>');
@@ -112,7 +114,7 @@ function renderCourses(depart){
                 var class_section2 = $('<div class="class-section">'); 
                 var row = $('<div class=" row"></div>');
                 var table = $('<table class="table"></table>'); 
-                var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Prof</td><td>Place</td></tr></thead>'); 
+                var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
                 var tbody = $('<tbody></tbody>') ; 
                 var tr = $('<tr></tr>') ;
                 var td1 = $('<td>'+ section.SECTION+ '</td>') ;
@@ -142,7 +144,15 @@ function renderCourses(depart){
                 tbody2.append(tr2);
                 table2.append(thead2) ; 
                 table2.append(tbody2);
-                var add_bottun = $('<button class="btn  btn-danger">Add</button>');
+                var add_bottun = $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');
+//                add_bottun.trigger("create");
+//<div class="ui-btn ui-input-btn ui-shadow">
+//The Button
+//<input type="button" data-corners="false" data-enhanced="true" value="The Button"></input>
+//</div>
+                
+                
+                add_bottun.button();
                 row.append(table); 
                 row.append(table2) ; 
                 row.append(add_bottun);
