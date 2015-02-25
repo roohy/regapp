@@ -1,6 +1,13 @@
 $(function(){
     console.log('in dapartments.js file' );
-    schools = getSchools(setSchools); 
+    schools = getSchools(setSchools);
+//    department-list
+    $(document).on('click', "#department-list li" , function() {
+        k2 = $(this); 
+        k = $(this).attr('dept_code'); 
+        window.location = ("./courselist.html?dept=" + k); 
+//        window.location="website/nextpage.jsp/param/{YOUR PARAMETER}";
+});
     
 });
 
@@ -33,6 +40,7 @@ function setDepartments(data, ul_element){
     for ( var i in school.SOC_DEPARTMENT_CODE){
         var dept = school.SOC_DEPARTMENT_CODE[i]; 
         var li = $('<li><a href="index.html">'+ dept.SOC_DEPARTMENT_DESCRIPTION + '</a></li>');
+        li.attr('dept_code' , dept.SOC_DEPARTMENT_CODE) ;  
         ul_element.append(li); 
     }
     ul_element.listview(); 
