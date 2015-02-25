@@ -14,7 +14,7 @@ $(function(){
 }); 
 function setTerms(data){
     if ( localStorage['ACTIVE_TERMS']== undefined)
-        localStorage['ACTIVE_TERMS'] = JSON.stringify(data);
+        localStorage['ACTIVE_TERMS']= JSON.stringify(data);
     var ul_element = $("#termList"); 
     for ( var i in data){
         var term = data[i] ; 
