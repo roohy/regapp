@@ -1,9 +1,9 @@
 $(function(){
+    //alert("I am getting the depts");
     console.log('in dapartments.js file' );
     schools = getSchools(setSchools); 
     
 });
-
 function setSchools(data){
     
     if ( localStorage['SCHOOLS']== undefined)

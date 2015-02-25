@@ -16,29 +16,34 @@
         <script src="flatui/dist/js/vendor/jquery.min.js"></script>
         <script src="js/Communication.js"></script>
         
-        <title>Hello World</title>
+        <title>Select Term</title>
     </head>
     <body  class="palette-pomegranate">
        <div id="container" data-role="page">
-           <div data-role="panel" id="nav-panel">
-                haha
-           </div>
-           <div data-role="content">
-               <nav class="navbar navbar-default" role="navigation">
-                   <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a  class="navbar-brand" href="#nav-panel">
-                                <img alt="Brand" src="img/usc_shield.png">
-                            </a>
-                       </div>
-                   </div>
-               </nav>
+           <!--<div data-role="panel" id="nav-panel">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Dashboard
+                        <ul class="list-group">
+                            <li class="list-group-item">My Coursebin</li>
+                            <li class="list-group-item">Courses</li>
+                            <li class="list-group-item">Calendar</li>
+                        </ul>
+                    </div>
+                </div>
+           </div>-->
+           <div data-role="content" id="content">
+               <div data-role="header" class="container-fluid">
+                    <h1 class="navbar-brand"><img src="img/usc_shield.png"> Terms </h1>
+                   <div class="clearfix"></div>
+               </div>
                <div >
-                <h8>Welcome Roohy</h8>
+                <div class="alert alert-info">Welcome Dear User. Please select a term to continue.</div>
                </div>
                <div id="control-area">
                    <span>Choose a Term</span>
                     <ul data-role="listview" id="termList">
+                        
 <!--
                         <li><a href="#">Fall 2014</a></li>
                         <li><a href="#">Spring 2015</a></li>
@@ -47,13 +52,20 @@
                     </ul>
                </div>
                <div id="notification-area">
-
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            Notifications
+                        </div>
+                        <div class="panel-body">
+                            If You have a notification from registration system, you can see
+                            it here. Notifications like lack of perior degree or not having clearance
+                            to register.
+                        </div>
+                   </div>
                </div>
+               <div class="clearfix"> </div>
             </div>
-        </div> 
-        <div id="setarehTest">
         </div>
-        
         <script src="flatui/dist/js/vendor/jquery.min.js"></script>
         <script src="jqm/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="cordova.js"></script>

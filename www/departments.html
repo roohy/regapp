@@ -18,18 +18,23 @@
     <body  class="palette-pomegranate">
        <div id="container" data-role="page">
            <div data-role="panel" id="nav-panel">
-                haha
+                <div class="panel panel-default">
+                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-body">
+                            <ul class="list-group">
+                            <li class="list-group-item">Term Selection</li>
+                            <li class="list-group-item">My Coursebin</li>
+                            <li class="list-group-item">Logout</li>
+                        </ul>
+                    </div>
+                </div>
            </div>
-           <div data-role="content">
-               <nav class="navbar navbar-default" role="navigation">
-                   <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a  class="navbar-brand" href="#nav-panel">
-                                <img alt="Brand" src="img/usc_shield.png">
-                            </a>
-                       </div>
-                   </div>
-               </nav>
+           <div data-role="content" id="content">
+               <div data-role="header" id="header" class="container-fluid">
+                    <a href="#nav-panel" data-icon="grid" id="menu-icon">Menu</a>
+                    <h1 class="navbar-brand"><img src="img/usc_shield.png"> Departments </h1>
+                   <div class="clearfix"></div>
+               </div>
                <div id="department-list">
                    <div data-role="collapsibleset" data-theme="a" data-content-theme="b" id="collapsible-list">
                         <!--<div data-role="collapsible">
@@ -41,7 +46,7 @@
                                 </ul>
                         </div>
 -->                   </div>
-                   
+                        
                    
                    
                </div>
