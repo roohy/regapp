@@ -8,6 +8,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         
         <link rel="stylesheet" type="text/css" href="flatui/dist/css/vendor/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="flatui/dist/css/flat-ui.min.css"/>
         <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.4.5.css"/>
         <link rel="stylesheet" type="text/css" href="css/base.css"/>
         <link rel="stylesheet" type="text/css" href="css/courselist.css"/>
@@ -75,11 +76,6 @@
                     </div>
                 </div>
                <!-- This following panel is for FIltering Options-->
-               <div class="panel panel-default">
-                    <div class="panel-body">
-                        Filters
-                    </div>
-                </div>
             </div>
            <div data-role="panel" id="nav-panel-left" data-position="left">
             
@@ -89,7 +85,16 @@
                     <a href="#nav-panel" data-icon="grid">Menu</a>
                     <h1 class="navbar-brand"><img src="img/usc_shield.png"> Courses </h1>
                    <a href="#nav-panel-right" data-icon="gear" class="ui-btn-right">Filters</a>
-                </div>
+                   <div class="clearfix"></div>
+                   <div data-role="navbar" id="#navbar">
+                        <!--<div class="input-group">
+                          <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn"><span class="fui-search"></span></button>
+                          </span>
+                        </div>-->
+                   </div>
+               </div>
                <div id="course-list">
                    <div class="course-card panel row-fluid">
                        <div class="panel-heading course-heading">
@@ -108,19 +113,13 @@
                             </p>
                             <div class="class-sections">
                                 <div class="panel panel-default">
+                                    <div class="panel-header">
+                                        <h5>Sections</h5>
+                                    </div>
                                     <div class="panel-body">
                                         <div class="class-section">
                                             
                                             <div class=" row">
-                                                <!--<span class="label label-default">29901R</span>
-                                                <span class="label label-default">Lec</span>
-                                                <span class="label label-default">Redekopp</span>
-                                                <span class="label label-default">26/46</span>
-                                                <span class="label label-default">3 Waiting</span>
-                                                <span class="label label-default">2:00pm-3:15PM</span>
-                                                <span class="label label-default">WThF</span>
-                                                
-                                                <span class="label label-default">RTH115</span>-->
                                                 <table class="table">
                                                     <thead >
                                                         <tr class="info">
