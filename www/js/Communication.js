@@ -3,11 +3,12 @@ var comm = comm | {} ;
 $(function() {
     console.log( "ready!" );
    // alert('something');
-    
  //   localStorage.clear() ;
-    localStorage['TERM'] = '20151' ;
+
+ //   localStorage['TERM'] = '20151' ;
     console.log('local Storage cleared' ) ; 
-  //  saveDepartmentToDB('FAPR') ; 
+
+//  saveDepartmentToDB('FAPR') ; 
 //    saveDepartmentToDB('FAPT');
     $("#setarehTest").html(JSON.stringify(window.localStorage['FAPR'])) ; 
     
@@ -17,15 +18,20 @@ function getSection(sectionID , opt_successFunction , opt_waitFunction){
     getFromServer('Sections/' + sectionID , opt_successFunction , opt_waitFunction) ; 
 }
 
-function getTerms(opt_termID, opt_successFunction , opt_waitFunction , opt_additionalInfo){
+function getTerms(opt_termID, successFunction , opt_waitFunction , opt_additionalInfo){
     opt_termID = opt_termID || "" ; 
-    getFromServer('Terms/' + opt_termID , opt_successFunction , opt_waitFunction , opt_additionalInfo); 
+    var terms = localStorage['ACTIVE_TERMS'] ; 
+    if ( terms == undefined)
+        getFromServer('Terms/' + opt_termID , successFunction , opt_waitFunction , opt_additionalInfo); 
+    else
+        successFunction(JSON.parse(terms) , opt_additionalInfo); 
 }
                   
 function getSessions(opt_sessionID, opt_successFunction , opt_waitFunction){
     opt_sessionID = opt_sessionID || ""; 
     getFromServer('Sessions/' + opt_sessionID , opt_successFunction , opt_waitFunction);
 }
+
     
 function getSchools(successFunction , opt_waitFunction){
     var sch = localStorage['SCHOOLS'] ; 

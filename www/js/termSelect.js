@@ -1,6 +1,11 @@
 $(function(){
     
     getTerms(NaN , setTerms); 
+    $(document).on('click', "#termList li" , function() {
+        k = $(this); 
+        localStorage.TERM = $(this).attr('term_code'); 
+        window.location = ("./departments.html")
+});
     
 }); 
 
@@ -10,12 +15,18 @@ function setTerms(data){
     var ul_element = $("#termList"); 
     for ( var i in data){
         var term = data[i] ; 
-        console.log('term is ' , term ) ; 
-        var li = $('<li><a href="#">' + term.DESCRIPTION + '</a></li>'); 
+//        console.log('term is ' , term ) ; 
+        var li = $('<li><a href="#">' + term.DESCRIPTION + '</a></li>');
+//        console.log('li is now ' , li ) ; 
+        li.attr('term_code' , term.TERM_CODE) ;
+        
+        console.log('li is now ' , li ) ; 
         ul_element.append(li); 
     }
     ul_element.listview('refresh'); 
 }
+
+
 
 
 
