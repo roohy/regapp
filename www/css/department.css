@@ -1,0 +1,25 @@
+/*#department-list li a{
+    background-color: #C0392B;
+    color: #F1C40F;
+    height: 4em;
+}
+#department-list #collapsible-list{
+    max-height: 100%;
+    overflow-y: scroll;
+}*/
+#content{
+    padding: 0;
+}
+
+#menu-icon{
+    margin-top: 0.5em;
+}
+#header{
+    background-color: #F1C40F;
+    color: #C0392B;
+}
+#header a{
+    
+    background-color: #F1C40F;
+    color: #C0392B;
+}

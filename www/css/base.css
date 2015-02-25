@@ -16,7 +16,13 @@ html,body{
     height: 100%;
 }
 
-
+#nav-panel .panel-heading{
+    background-color: #C0392B;
+    color: #F1C40F;
+}
+#nav-panel{
+    background-color : #E74C3C;
+}
 /*
 @-webkit-viewport{width:device-width;}
 @-moz-viewport{width:device-width;}
