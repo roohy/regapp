@@ -54,16 +54,16 @@ function saveDepartmentToDB(department_code , render){
      
     console.log('saving  ' , department_code,  '  to dB'); 
     term = localStorage.getItem('TERM'); 
-    if (window.localStorage.getItem(department_code)!=null){
+    if (window.localStorage.getItem(term + department_code)!=null){
         console.log('peida shod too local storage :DDDDD ');
         if (render == true){
-            renderCourses(JSON.parse(window.localStorage[department_code])); 
+            renderCourses(JSON.parse(window.localStorage[term + department_code])); 
         }
         return ; 
     }
     console.log('raftim ke course haro begirim :)' ); 
     
-    getCourses(term, department_code, fetchSections , NaN , {'depart':department_code , 'render' : render}) ;
+    getCourses(term, department_code, fetchSections , NaN , {'depart':department_code , 'render' : render , 'term':term}) ;
 }
 
 counter = 0 ;
@@ -71,23 +71,22 @@ counter2 = 0 ;
 
 function fetchSections(courses , info){
     var depart = info.depart ; 
-    window.localStorage[depart] = JSON.stringify(courses);
-    var term = localStorage.TERM; 
+    var term = info.term ; 
+    window.localStorage[term + depart] = JSON.stringify(courses); 
     for (var i =0 ; i< courses.length ; i++){
         var course_id = courses[i]['COURSE_ID'] ; 
        // console.log('fetching cestions for couse + ' + course_id );
         counter ++ ; 
-         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i , 'render' : info.render});
+         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i , 'render' : info.render , 'term': term });
     }
 }
 
 function setSections(sections , info){
-    globalSections = sections ;
-    globaInfo = info ; 
-    var depart = info['depart'] ; 
-    index = info['index'];
+    var depart = info.depart ; 
+    var term = info.term ;
+    index = info.index;
  //   console.log('index is ' , index);
-    a = window.localStorage[depart];
+    a = window.localStorage[term + depart];
     a = JSON.parse(a);
 //    console.log('paresed term_depart is' ,a  );
     
@@ -97,7 +96,7 @@ function setSections(sections , info){
   //  console.log('sections of this course are ' , k);
 //    console.log('before adding the sections ' , a); 
     a[index]['V_SOC_SECTION']=k;
-    localStorage[depart] = JSON.stringify(a); 
+    localStorage[term + depart] = JSON.stringify(a); 
     //alert('vaisa inja');
     console.log('after adding the sections ' , a);
     counter2 ++; 
