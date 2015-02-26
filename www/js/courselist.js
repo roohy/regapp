@@ -51,7 +51,7 @@ var app = {
         });
     },
     courseClick: function(event){
-        //alert("hahaha");
+        alert("hahaha");
         $(event.target).children(".course-details").slideToggle("slow",function(){return;});
         //TODO: set something to store the visibility of the damn thing
     }
@@ -81,8 +81,8 @@ function renderCourses(course_list){
     $('#course-list').empty();
 //    mycourse_list = JSON.parse(localStorage[depart]); 
         for ( var d in course_list){
-            if (d>3)
-                return ; 
+//            if (d>3)
+//                return ; 
             var course = course_list[d] ; 
             console.log(' rendering course : ' , course  ) ;
             var card = $('<div class="course-card panel row-fluid"></div>');
@@ -167,6 +167,7 @@ function renderCourses(course_list){
             card.append(class_details) ;
             $("#course-list").append(card);
         }
+//    alert("alert");
     $('.course-card').click(function(event){
         courseClick(this);
     });
