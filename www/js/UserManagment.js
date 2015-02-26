@@ -1,7 +1,8 @@
 function authenticate(username, password){
-    if (username == 'test1' && password == 'test1')
+    console.log('we are authenticating the user ' ) ;
+    if (username == 'user1' && password == '123')
         return true ; 
-    if (username =='test2' && password == 'test2')
+    if (username =='user2' && password == '')
         return true; 
     return false ; 
 }

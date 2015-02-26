@@ -49,13 +49,25 @@ var app = {
         $('#login-button').click(app.loginClick);
     },
     loginClick: function(){
-        app.showAlert("wrong");
-        alert("haha");
-        //TODO: We should call the login function with login-name and login-pass  and make labels
+        
+       if ( navigator.onLine == false){
+           console.log('show alerting with false ');
+           app.showAlert(false);
+            return ;
+       }
+        var username = $('#login-name').val();
+        var password = $("#login-pass").val(); 
+        var auth = authenticate(username , password); 
+        if ( auth == true)
+            window.location = './termSelect.html' ; 
+        else{
+            console.log('show alert with true'); 
+            app.showAlert(true);
+        }
     },
     showAlert: function(type){
         var id;
-        if(type == "wrong"){
+        if(type == true){
             id = "#wrong-cred";
         }
         else{
@@ -68,3 +80,38 @@ var app = {
         });
     }
 };
+
+function authenticate(username, password){
+    console.log('we are authenticating the user ' ) ;
+    if (username == 'user1' && password == '123')
+        return true ; 
+    if (username =='user2' && password == '')
+        return true; 
+    return false ; 
+}
+    
+function checkConnection() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: '+ states[networkState]);
+}
+
+
+$(function(){
+    $('#login-button').click(app.loginClick);
+    alert('hello???' ) ; 
+    if ( navigator.onLine){
+    console.log('yesss online hastim ') ; 
+        alert('yeeeeessssss' ) ; 
+    }
+    
+});
