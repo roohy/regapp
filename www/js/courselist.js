@@ -246,12 +246,25 @@ $(function(){
                           '<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">'+
                           '<span class="input-group-btn"><button type="submit" class="btn"><span class="fui-search"></span></button></span></div>').appendTo('#navbar');
     
-    $('#navbar').navbar();
+    //$('#navbar').navbar();
     
+    //initializing the time picker
+     $('#start-time').mobiscroll().time({
+                    theme: $.mobiscroll.defaults.theme,     // Specify theme like: theme: 'ios' or omit setting to use default 
+                    mode: 'scroller',       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
+                    display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default 
+                    lang: 'pl'        // Specify language like: lang: 'pl' or omit setting to use default 
+                });
+    $('#end-time').mobiscroll().time({
+                    theme: $.mobiscroll.defaults.theme,     // Specify theme like: theme: 'ios' or omit setting to use default 
+                    mode: 'scroller',       // Specify scroller mode like: mode: 'mixed' or omit setting to use default 
+                    display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default 
+                    lang: 'pl'        // Specify language like: lang: 'pl' or omit setting to use default 
+                });
     saveDepartmentToDB(localStorage.DEPT_CODE, true) ;
     
-    
-    
+
+
 });
 
 

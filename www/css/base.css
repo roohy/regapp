@@ -29,3 +29,14 @@ html,body{
 @-o-viewport{width:device-width;}
 @viewport{width:device-width;}
 @-ms-viewport{width:device-width;}*/
+
+
+#header{
+    background-color: #F1C40F;
+    color: #C0392B;
+}
+#header a{
+    
+    background-color: #F1C40F;
+    color: #C0392B;
+}

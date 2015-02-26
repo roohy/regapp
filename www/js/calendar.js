@@ -16,37 +16,48 @@ function addToCalendar(startTime,endTime, dates){
     var endRowCount = (parsedEnd-6)*2 + parsedEndChange/20;
     //extracting the dates
     var columnList = [];
-    for(var  day in dates){
+    for(var  i in dates){
+        var day = dates[i]; 
         columnList.push(datesInt[day]+1);
+        console.log("day is " +day);
     }
     
     
     var startPosition;
-    var endPosition;
+    var endPosition = {};
     var width;
     var height;
     
     var startRow = $(calendarTable+' tr')[startRowCount+1];
-    var endRow = $(calendarTable+' tr')[endRowCount+1]; 
-    for(day in columnList){
-        startPosition = startRow.children("td")[day].position();
-        endPosition.right= endRow.children("td")[day].position().left+endRow.children("td")[day].width();
-        endPosition.bottom= endRow.children("td")[day].position().top+endRow.children("td")[day].height();
+    var endRow = $(calendarTable+' tr')[endRowCount+1];
+    startRow = $(startRow);
+    endRow =$(endRow);
+    for(i in columnList){
+        var day = columnList[i];
+        startPosition = $(startRow.children("td")[day]).position();
+        endPosition.right= $(endRow.children("td")[day]).position().left+$(endRow.children("td")[day]).width();
+        endPosition.bottom= $(endRow.children("td")[day]).position().top+$(endRow.children("td")[day]).height();
         width = endPosition.right-startPosition.left;
         height = endPosition.bottom-startPosition.top;
-        $('<div class="timeBlock"></div>').css({
-            position: absolute,
+        var result = $('<div class="timeBlock"></div>').css({
+            position: 'absolute',
             top: startPosition.top+'px',
             left: startPosition.left+'px',
             width: width+'px',
-            height: height+'px'
-        }).appendTo($('body'));
+            height: height+'px',
+            background: '#FF5533'
+        });
+        result.appendTo($('body'));
+        console.log(result);
+        console.log(result.position());
+        console.log(result.height());
+        console.log("day is "+day);
     }
     
 }
 
 $(function(){
-    alert("starting to print");
-    addToCalendar("8:00","10:00",['M']);
+    var list = ['M'];
+    addToCalendar("8:00","10:00",list);
     alert("haha");
 });
