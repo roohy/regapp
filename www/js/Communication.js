@@ -61,7 +61,7 @@ function saveDepartmentToDB(department_code , render){
         }
         return ; 
     }
-    console.log('raftim ke course haro begirim :)' ); 
+    console.log('raftim ke course haro begirim :) department code = ' , department_code ); 
     
     getCourses(term, department_code, fetchSections , NaN , {'depart':department_code , 'render' : render , 'term':term}) ;
 }
@@ -110,6 +110,7 @@ function setSections(sections , info){
 
 function getFromServer(url , successFunction , waitFunction , opt_additionalInfo){
 //comm.getFromServer = function(url ) {
+    console.log(' in get From server and url is ' , url ) ;
     var successFunction = successFunction || function(){} ;
     var waitFunction = waitFunction || function(){};  
     $.ajax({
@@ -129,7 +130,7 @@ function getFromServer(url , successFunction , waitFunction , opt_additionalInfo
             successFunction(data, opt_additionalInfo);
         })
         .error(function(data){
-            alert("errorrr in ajax " ); 
+            alert("errorrr in ajax and data is " , data); 
         });
 }
 

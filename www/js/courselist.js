@@ -67,14 +67,64 @@ function renderCourses(course_list){
         var min_units = mycourse.MIN_UNITS ; 
         var max_units = mycourse.MAX_UNITS ;
         var unitString  ; 
+        if (min_units == null || max_units == null){
+            return ("0 Units") ;
+        }
         if ( min_units == max_units ){
             unitString = parseFloat(min_units).toString() ;
             if (min_units==1) unitString+= " Unit" ; 
-            else unitString+= " Units" 
+            else unitString+= " Units" ;
         }
         else
             unitString = (parseFloat(min_units).toString()) + "-" + (parseFloat(max_units).toString()) + " Units";
         return unitString; 
+    }
+    function getTime(mysection){
+        if (mysection.BEGIN_TIME == null || mysection.END_TIME == null)
+            return ("---") ; 
+        if (mysection.BEGIN_TIME == "TBA")
+            return ("TBA");
+        var begin_time = mysection.BEGIN_TIME.split('||')[0]; 
+        var end_time = mysection.END_TIME.split('||')[0]; 
+        console.log('begin time is ' , begin_time , ' and end time is ' , end_time) ;
+        return (begin_time + "-" + end_time) ;
+    }
+    function getDays(mysection){
+        if (mysection.DAY == null)
+            return ('---');
+        return mysection.DAY.split('||')[0]; 
+    }
+    function getStats(mysection){
+        var registered = mysection.REGISTERED; 
+        if (registered == null)
+            registered = 0 ; 
+        var seats = mysection.SEATS ; 
+        return registered.toString() + "/" + seats.toString();
+    }
+    function getType(mysection){
+        var type = mysection.TYPE ; 
+        if (type == null)
+            return ('---');
+        return type; 
+    }
+    function getInstructor(mysection){
+        var inst = mysection.INSTRUCTOR ; 
+        if (inst == null)
+            return ('---');
+        var ins = inst.split('||'); 
+        var result = ins[0].substr(0,ins[0].search(','));
+        for ( var i =1 ; i<ins.length ; i++){
+            result += (", " + ins[i].substr(0,ins[i].search(','))) ;  
+        }
+        return result ;  
+        
+    }
+    function getLocation(mysection){
+        var location = mysection.LOCATION; 
+        if (location == null)
+            return ('---'); 
+        location = location.split('||')[0] ; 
+        return location ; 
     }
     console.log('in rendering coursessssssss ' , course_list);
     
@@ -118,9 +168,9 @@ function renderCourses(course_list){
                 var tbody = $('<tbody></tbody>') ; 
                 var tr = $('<tr></tr>') ;
                 var td1 = $('<td>'+ section.SECTION+ '</td>') ;
-                var td2 = $('<td>' + section.TYPE + '</td>') ; 
-                var td3 = $('<td>' + section.INSTRUCTOR + '</td>' ) ; 
-                var td4 = $('<td>' + section.LOCATION + '</td>') ; 
+                var td2 = $('<td>' + getType(section) + '</td>') ; 
+                var td3 = $('<td>' + getInstructor(section) + '</td>' ) ; 
+                var td4 = $('<td>' + getLocation(section) + '</td>') ; 
                 tr.append(td1); 
                 tr.append(td2); 
                 tr.append(td3); 
@@ -133,10 +183,10 @@ function renderCourses(course_list){
                 var thead2 = $('<thead ><tr class="info"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
                 var tbody2 = $('<tbody></tbody>') ;
                 var tr2 = $('<tr></tr>');
-                var td2_1 = $('<td>Timeeeee</td>');
-                var td2_2 = $('<td> dayssss </td>');
-                var td2_3 = $('<td>capacityyyy</td>');
-                var td2_4 = $('<td>capacityy</td>');
+                var td2_1 = $('<td>'+ getTime(section)+'</td>');
+                var td2_2 = $('<td>' + getDays(section) +'</td>');
+                var td2_3 = $('<td>' + getStats(section) + '</td>');
+                var td2_4 = $('<td>0</td>');
                 tr2.append(td2_1); 
                 tr2.append(td2_2); 
                 tr2.append(td2_3); 
