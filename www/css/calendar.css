@@ -52,3 +52,16 @@ td {
 table{
     text-size: small;
 }
+.unitDiv{
+    width: 50%;
+    padding: 0.5em;
+    
+}
+.unitDiv select{
+    font-size: small;
+    width: 50%;
+}
+.unitDiv .ui-select, .unitDiv label{
+    display: inline;
+    font-size: small;
+}

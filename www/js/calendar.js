@@ -60,4 +60,15 @@ $(function(){
     var list = ['M'];
     addToCalendar("8:00","10:00",list);
 //    alert("haha");
+    $('.ctrl-btn').click(function(){
+        console.log($(this).attr('id'));
+    });
+    
+    $('<select><option value="4">4 Units</option><option value="0">Credit</option><option value="-1">Audit</option></select>').appendTo($('.unitDiv'));
+//    $('.selectpicker').selectpicker({
+//        style: 'btn-info',
+//        size: 3
+//    }
+//    );
+//        $('.selectpicker').selectpicker('show');                                                                                                                                  
 });
