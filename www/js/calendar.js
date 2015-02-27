@@ -59,5 +59,5 @@ function addToCalendar(startTime,endTime, dates){
 $(function(){
     var list = ['M'];
     addToCalendar("8:00","10:00",list);
-    alert("haha");
+//    alert("haha");
 });

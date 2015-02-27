@@ -22,18 +22,6 @@
     padding: 1em;
 }
 
-#nav-panel{
-    background-color: #C0392B;
-
-}
-#nav-panel .panel{
-    background-color: #F1C40F;
-    color: #C0392B;
-}
-#nav-panel .panel .panel{
-    background-color: #FFFFFF;
-}
-
 table{
     text-size: small;
 }

@@ -6,105 +6,72 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        
+<!--        <script src="semantic/semantic.min.js"></script>-->
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="flatui/dist/css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="flatui/dist/css/flat-ui.min.css"/>
         <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.4.5.css"/>
         <link rel="stylesheet" type="text/css" href="css/base.css"/>
-        <link rel="stylesheet" type="text/css" href="css/addCoursePage"/>
-        <link rel="stylesheet" type="text/css" href="css/fontAwesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/addCoursePage.css"/>
         <title>Hello World</title>
     </head>
-    <body  >
-       <div id="container"  data-role="page">
-           <div data-role="panel" id="nav-panel-right" data-position="right" >
-               <div data-role="header">
-                    <h1>Filters</h1>
+    <body  class="palette-pomegranate">
+       <div id="container" data-role="page">
+           <div data-role="panel" id="nav-panel">
+                <div id="nav-header">
+                    <h2 class="pull-left">USC</h2>
+                    <h4>Mobile Registration</h4>
                </div>
-               <div data-role="content" class="ui-corner-all">
-                    <div class="ui-field-contain ui-mini" >
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                            <legend>Date: </legend>
-                            <input type="checkbox" name="checkbox-monday" id="checkbox-monday" class="custom">
-                            <label for="checkbox-monday">M</label>
-                            
-                            <input type="checkbox" name="checkbox-tuesday" id="checkbox-tuesday" class="custom">
-                            <label for="checkbox-tuesday">T</label>
-                            
-                            <input type="checkbox" name="checkbox-wednesday" id="checkbox-wednesday" class="custom">
-                            <label for="checkbox-wednesday">W</label>
-                            
-                            <input type="checkbox" name="checkbox-thursday" id="checkbox-thursday" class="custom">
-                            <label for="checkbox-thursday">Th</label>
-                            
-                            <input type="checkbox" name="checkbox-friday" id="checkbox-friday" class="custom">
-                            <label for="checkbox-friday">F</label>
-                            
-                            <input type="checkbox" name="checkbox-saturday" id="checkbox-saturday" class="custom">
-                            <label for="checkbox-saturday">Sa</label>
-                            
-                            <input type="checkbox" name="checkbox-sunday" id="checkbox-sunday" class="custom">
-                            <label for="checkbox-sunday">Su</label>
-                        </fieldset>
-                   </div>
-                                <div class=""></div>
-                                <div id="department-list">
-                                    <h6>Department Selection</h6>
-                                       <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
-                                            <div data-role="collapsible">
-                                                <h2>Viterbi School Of Eng</h2>
-                                                    <ul data-role="listview"  data-divider-theme="b">
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">CSCI Department</label></li>
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">Petroleom Engineering</label></li>
-                                                        <li><label class="checkbox" for="csci"> <input type="checkbox" value="CSCI" id="csci" checked="checked" data-toggle="checkbox" class="custom-checkbox">khar khar department</label></li>
-
-                                                </ul>
-                                            </div>
-                                       </div>
-                                   </div>
-               </div>
-           </div>
-           <div data-role="panel" id="nav-panel" >
+               <div class="clearfix"></div>
                 <div class="panel panel-default">
-                    <div class="panel-body">
-                        Dashboard
-                        <ul class="list-group">
-                            <li class="list-group-item">My Coursebin</li>
-                            <li class="list-group-item">Courses</li>
-                            <li class="list-group-item">Calendar</li>
+                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-body">Dear Ruhollah,<br>You have 2 alerts to read,
+                            <br>Deadline for droping a course in less than a week.</div>
+                            <ul class="list-group">
+                            <li class="list-group-item nav-item" ><a href="./termSelect.html">Term Selection</a></li>
+                            <li class="list-group-item nav-item"><a href="./departments.html">Departments and Schools</a></li>
+                            <li class="list-group-item nav-item"><a href="./courselist.html">Courses</a></li>
+                            <li class="list-group-item nav-item"><a href="./clanedar.html">My Coursebin</a></li>
+                            <li class="list-group-item nav-item"><a href="./loginPage.html">Logout</a></li>
                         </ul>
-                    </div>
+                    
                 </div>
-               <!-- This following panel is for FIltering Options-->
-            </div>
-           <div data-role="panel" id="nav-panel-left" data-position="left">
-            
            </div>
-           <div data-role="content"  >
-               <div data-role="header" class="container-fluid">
-                    <a href="#nav-panel" data-icon="grid">Menu</a>
-                    <h1 class="navbar-brand"><img src="img/usc_shield.png"> Add Course </h1>
-                   <a href="#nav-panel-right" data-icon="gear" class="ui-btn-right">Filters</a>
+           <div data-role="content" id="content">
+               <div data-role="header" id="header" class="container-fluid">
+                    <a href="#nav-panel" data-icon="grid" id="menu-icon">Menu</a>
+                    <h1 class="navbar-brand"><img src="img/usc_shield_yellow.png"> Departments </h1>
                    <div class="clearfix"></div>
-                   <div data-role="navbar" id="#navbar">
-                        <!--<div class="input-group">
-                          <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-                          <span class="input-group-btn">
-                            <button type="submit" class="btn"><span class="fui-search"></span></button>
-                          </span>
-                        </div>-->
-                   </div>
                </div>
-               <div ></div>
-           </div>
-        </div>
+               <div id="department-list">
+                   <div data-role="collapsibleset" data-theme="a" data-content-theme="b" id="collapsible-list">
+                        <!--<div data-role="collapsible">
+                            <h2>Viterbi School Of Eng</h2>
+                                <ul data-role="listview"  data-divider-theme="b">
+                                    <li><a href="index.html">CSCI Department</a></li>
+                                    <li><a href="index.html">Petroleum Eng</a></li>
+                                    <li><a href="index.html">blah blah</a></li>
+                                </ul>
+                        </div>
+-->                   </div>
+                        
+                   
+                   
+               </div>
+            </div>
+        </div> 
         
+        <div id="coverThing"><img src="img/379.GIF "> </div>
         <script src="flatui/dist/js/vendor/jquery.min.js"></script>
         <script src="jqm/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/addCoursePage.js"></script>
+        <script type="text/javascript" src="js/Communication.js"></script>
+        
         <script type="text/javascript">
             app.initialize();
         </script>
+
     </body>
 </html>

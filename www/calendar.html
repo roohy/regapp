@@ -12,7 +12,6 @@
         <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.4.5.css"/>
         <link rel="stylesheet" type="text/css" href="css/base.css" />
         <link rel="stylesheet" type="text/css" href="css/calendar.css">
-        <link rel="stylesheet" type="text/css" href="css/courselist.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontAwesome/css/font-awesome.min.css"/>
         
         <title>Calendar</title>
@@ -21,18 +20,24 @@
     <body >
         <div data-role="page">
             <div data-role="panel" id="nav-panel">
+                <div id="nav-header">
+                    <h2 class="pull-left">USC</h2>
+                    <h4>Mobile Registration</h4>
+               </div>
+               <div class="clearfix"></div>
                 <div class="panel panel-default">
-                        <div class="panel-heading">Dashboard</div>
-                        <div class="panel-body">
-                                <ul class="list-group">
-                                <li class="list-group-item" >Term Selection</li>
-                                <li class="list-group-item">Departments</li>
-                                <li class="list-group-item">Courses</li>
-                                <li class="list-group-item">Logout</li>
-                            </ul>
-                        </div>
-                    </div>
-            </div>
+                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-body">Dear Ruhollah,<br>You have 2 alerts to read,
+                            <br>Deadline for droping a course in less than a week.</div>
+                            <ul class="list-group">
+                            <li class="list-group-item nav-item" ><a href="./termSelect.html">Term Selection</a></li>
+                            <li class="list-group-item nav-item"><a href="./departments.html">Departments</a></li>
+                            <li class="list-group-item nav-item"><a href="./courselist.html">Courses</a></li>
+                            <li class="list-group-item nav-item"><a href="./loginPage.html">Logout</a></li>
+                        </ul>
+                    
+                </div>
+           </div>
             <div data-role="content" id="content">
                 <div data-role="header" id="header" class="container-fluid">
                     <a href="#nav-panel" data-icon="grid" id="menu-icon">Menu</a>
@@ -131,18 +136,11 @@
                                <div class="panel-heading course-heading">
                                     <h9 class="course-title">Introduction to Programming</h9>
                                     <span class="label label-default">CSCI-101 L</span>
-                                    <span class="label label-info">3 Units</span>
-                                    <span class="pull-right glyphicon glyphicon-plus"></span></div>
+                                    <span class="label label-info">3 Units</span></div>
 
                                 <div class="class-details">
                                     <div class="class-sections">
-                                        <div class="panel panel-default">
-                                            <div class="panel-header">
-                                                <h5>Section</h5>
-                                            </div>
-                                            <div class="panel-body">
                                                 <div class="class-section">
-
                                                     <div class=" row">
                                                         <table class="table">
                                                             <thead>
@@ -182,8 +180,7 @@
                                                         </table>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                </div>
                            </div>
