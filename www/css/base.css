@@ -40,3 +40,7 @@ html,body{
     background-color: #F1C40F;
     color: #C0392B;
 }
+
+.login-form .login-field:focus{
+    border-color: #C0392B;
+}
