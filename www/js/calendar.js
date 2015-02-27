@@ -55,13 +55,20 @@ function addToCalendar(startTime,endTime, dates){
     }
     
 }
-
+function registerConfirmation(){
+    $('#regConPopup').popup('open',{transition: 'pop'});
+}
 $(function(){
     var list = ['M'];
     addToCalendar("8:00","10:00",list);
 //    alert("haha");
     $('.ctrl-btn').click(function(){
         console.log($(this).attr('id'));
+        if ($(this).attr('id') == 'regButton'){
+            registerConfirmation();
+        }
+        else{
+        }
     });
     
     $('<select><option value="4">4 Units</option><option value="0">Credit</option><option value="-1">Audit</option></select>').appendTo($('.unitDiv'));
