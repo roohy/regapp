@@ -47,7 +47,7 @@ function addToCalendar(startTime,endTime, dates){
             height: height+'px',
             background: '#FF5533'
         });
-        result.appendTo($('body'));
+        result.appendTo($('#content'));
         console.log(result);
         console.log(result.position());
         console.log(result.height());

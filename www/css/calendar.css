@@ -26,3 +26,8 @@ td {
     overflow-x: visible;
     overflow-y: hidden;
 }
+
+#content{
+    padding: 0;
+    position: relative;
+}
