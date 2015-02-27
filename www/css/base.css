@@ -1,6 +1,7 @@
 
 html,body{
     height: 100%;
+    text-shadow: initial;
 }
 
 .center-floating{
@@ -93,4 +94,15 @@ html,body{
 #nav-panel .panel-body{
     background-color: transparent;
     color: #1ABC9C;
+}
+
+div#nav-panel{
+    text-shadow: initial;
+}
+#nav-panel .panel{
+    border-color: #1ABC9C;
+}
+
+li.list-group-item.nav-item{
+    border-color: #1ABC9C;
 }

@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -48,7 +50,17 @@ var app = {
     }
 };
 
-
 function hideLoading(){
     $('#coverThing').slideUp(500);
 }
+
+function navbarLinkHandler(target){
+    alert("haha");
+    window.location = $(target).attr('hrefer');
+    return false;
+}
+
+
+$(function(){
+    $('.nav-item a').click(function(){navbarLinkHandler(this)});
+});
