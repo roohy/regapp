@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="flatui/dist/css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="flatui/dist/css/flat-ui.min.css"/>
         <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.4.5.css"/>
+        <link rel="stylesheet" type="text/css" href="css/base.css" />
         <link rel="stylesheet" type="text/css" href="css/calendar.css">
         <link rel="stylesheet" type="text/css" href="css/courselist.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontAwesome/css/font-awesome.min.css"/>
@@ -17,430 +18,188 @@
         <title>Calendar</title>
     </head>
     
-    <body class="palette-pomegranate">
-        <style>
-            body {
-                padding-bottom: 200px;
-            }
-        </style>
-        
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="flatui/dist/js/vendor/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="flatui/dist/js/flat-ui.min.js"></script>
-        
-        <nav class="navbar navbar-default" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-              </button>
-              <a class="navbar-brand" href="#">Calendar</a>
+    <body >
+        <div data-role="page">
+            <div data-role="panel" id="nav-panel">
+                <div class="panel panel-default">
+                        <div class="panel-heading">Dashboard</div>
+                        <div class="panel-body">
+                                <ul class="list-group">
+                                <li class="list-group-item" >Term Selection</li>
+                                <li class="list-group-item">Departments</li>
+                                <li class="list-group-item">Courses</li>
+                                <li class="list-group-item">Logout</li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
+            <div data-role="content" id="content">
+                <div data-role="header" id="header" class="container-fluid">
+                    <a href="#nav-panel" data-icon="grid" id="menu-icon">Menu</a>
+                    <h1 class="navbar-brand"><img src="img/usc_shield.png"> Departments </h1>
+                   <div class="clearfix"></div>
+               </div>
+                <div class="box">
+                <table style="tawidth=100%" id="calendarTable">
+                    <tr>
+                        <th> </th>
+                        <th>Su</th>
+                        <th>M</th>
+                        <th>Tu</th>
+                        <th>W</th>
+                        <th>Th</th>
+                        <th>F</th>
+                        <th>Sa</th>
+                    </tr>
+                    <tr><td>6</td><td></td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>7 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>8 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>9 </td><td></td> <td></td> <td></td> <td></td> <td></td><td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>10 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>11 </td><td></td> <td></td> <td></td> <td></td> <td></td><td ></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>12 </td><td></td> <td></td> <td></td></td> <td></td> <td></td> <td></td><td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>1 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>2 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>3 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>4 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>5 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>6 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td><td ></td><td></td><td ></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>7 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>8 </td><td></td> <td></td> <td></td> <td></td><td ></td> <td></td><td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>9 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>10 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>11 </td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                    <tr><td>-</td><td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td></tr>
+                </table>
+                </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <li><a href="#"><span class="visible-sm visible-xs">Add Block of Time<span class="fui-arrow-right"></span></span></a></li>
-                  <li><a href="#"><span class="visible-sm visible-xs">Save as PDF<span class="fui-export"></span></span></a></li>
-                </ul>
-            </div>
-        </nav>
-        
-        <div class="box">
-        <table style="tawidth=100%" id="calendarTable">
-            <tr>
-                <th> </th>
-                <th>Su</th>
-                <th>M</th>
-                <th>Tu</th>
-                <th>W</th>
-                <th>Th</th>
-                <th>F</th>
-                <th>Sa</th>
-            </tr>
-            <tr>
-                <td>6:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>7:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>8:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>9:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td>
-                <td>
-                    <!--<div class="btn-group">
-                        <button type="button" id="oneHour" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">CSCI 570</button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">See other sections</a></li>
-                                <li><a href="#">Something else</a></li>
-                                <li>
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary" type="button"></button>
-                                        <button class="btn btn-danger" type="button"></button>
-                                        <button class="btn btn-info" type="button"></button>
-                                        <button class="btn btn-success" type="button"></button>
-                                        <button class="btn btn-warning" type="button"></button>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Unschedule</a></li>
-                                <li><a href="#">Remove</a></li>
-                            </ul>
-                    </div>-->
-                </td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>10:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>11:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> 
-                <td >
-                    <!--<div class="btn-group">
-                        <button type="button" id="oneHalfHour" class="btn btn-info dropdown-toggle" data-toggle="dropdown">ITP 496</button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">See other sections</a></li>
-                                <li><a href="#">Something else</a></li>
-                                <li>
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary" type="button"></button>
-                                        <button class="btn btn-danger" type="button"></button>
-                                        <button class="btn btn-info" type="button"></button>
-                                        <button class="btn btn-success" type="button"></button>
-                                        <button class="btn btn-warning" type="button"></button>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Unschedule</a></li>
-                                <li><a href="#">Remove</a></li>
-                            </ul>
-                    </div>-->
-                </td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>12:00</td>
-                <td></td> <td></td> <td></td>
-                <!--<td rowspan="6">
-                    <div class="btn-group">
-                        <button type="button" id="threeHour" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">CSCI 564</button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">See other sections</a></li>
-                            <li><a href="#">Something else</a></li>
-                            <li>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" type="button"></button>
-                                    <button class="btn btn-danger" type="button"></button>
-                                    <button class="btn btn-info" type="button"></button>
-                                    <button class="btn btn-success" type="button"></button>
-                                    <button class="btn btn-warning" type="button"></button>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Unschedule</a></li>
-                            <li><a href="#">Remove</a></li>
-                        </ul>
-                    </div>-->
-                </td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>1:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>2:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>3:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>4:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>5:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>6:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td>
-                <td >
-                    <!--<div class="btn-group">
-                        <button type="button" id="threeHour" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">EE 484</button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">See other sections</a></li>
-                            <li><a href="#">Something else</a></li>
-                            <li>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" type="button"></button>
-                                    <button class="btn btn-danger" type="button"></button>
-                                    <button class="btn btn-info" type="button"></button>
-                                    <button class="btn btn-success" type="button"></button>
-                                    <button class="btn btn-warning" type="button"></button>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Unschedule</a></li>
-                            <li><a href="#">Remove</a></li>
-                        </ul>
-                    </div>-->
-                </td>
-                <td></td>
-                <td >
-                    <!--<div class="btn-group">
-                        <button type="button" id="threeHour" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">CSCI 570</button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">See other sections</a></li>
-                                <li><a href="#">Something else</a></li>
-                                <li>
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary" type="button"></button>
-                                        <button class="btn btn-danger" type="button"></button>
-                                        <button class="btn btn-info" type="button"></button>
-                                        <button class="btn btn-success" type="button"></button>
-                                        <button class="btn btn-warning" type="button"></button>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Unschedule</a></li>
-                                <li><a href="#">Remove</a></li>
-                            </ul>
-                    </div>-->
-                </td> <td></td> <td></td> <td></td> 
-            </tr>
-            <tr>
-                <td>7:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>8:00</td>
-                <td></td> <td></td> <td></td> <td></td>
-                <td >
-                    <!--<div class="btn-group">
-                        <button type="button" id="twoHour" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">CSCI 570</button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">See other sections</a></li>
-                            <li><a href="#">Something else</a></li>
-                            <li>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" type="button"></button>
-                                    <button class="btn btn-danger" type="button"></button>
-                                    <button class="btn btn-info" type="button"></button>
-                                    <button class="btn btn-success" type="button"></button>
-                                    <button class="btn btn-warning" type="button"></button>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Unschedule</a></li>
-                            <li><a href="#">Remove</a></li>
-                        </ul>
-                    </div>-->
-                </td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>9:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>10:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>11:00</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-            <tr>
-                <td>-</td>
-                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
-            </tr>
-        </table>
-        </div>
-        
-        <br> <br>
-        
-    <!--
-        <div class="box">
-        <table width="100%" id="classTable">
-            <tr>
-                <th>Course #</th> <th>Course Title</th> <th>Section</th>
-                <th>Type</th> <th>Units</th> <th>Schedule</th> <th>Location</th>
-                <th>Grade Option</th> <th>Instructor</th> 
-            </tr>
-            <tr style="background-color: #69BB9C">
-                <td>CSCI-570</td> <td>Analsis of Algorithms</td> <td>30177</td>
-                <td>Lecture</td> <td>3</td> <td>6:40 - 9:20 pm, W</td> <td>SGM 123</td>
-                <td>Letter Grade</td> <td>Shahriar Shamsian</td>
-            </tr>
-            <tr style="background-color: #69BB9C">
-                <td></td> <td></td> <td>29913</td>
-                <td>Discussion</td> <td></td> <td>9:00 - 9:50 am, F</td> <td>SOS B46</td>
-                <td></td> <td>Jeffrey Miller</td>
-            </tr>
-            <tr style="background-color: #69BB9C">
-                <td></td> <td></td> <td>30227</td>
-                <td>Quiz</td> <td></td> <td>8:00 - 9:50 pm, F</td> <td>TBA</td>
-                <td></td> <td></td>
-            </tr>
-            <tr style="background-color: #E6C40A">
-                <td>EE-484</td> <td>Communication System Design</td> <td>30628</td>
-                <td>Lecture</td> <td>3</td> <td>6:30 - 9:20 pm, M</td> <td>KAP 134</td>
-                <td>Letter Grade</td> <td>Christopher Walker</td>
-            </tr>
-            <tr></tr>
-            <tr></tr>
-        </table>
-        </div>
-    -->
+                <br> <br>
 
-        <div id="course-list">
-                   <div class="course-card panel row-fluid">
-                       <div class="panel-heading course-heading">
-                            <h9 class="course-title">Introduction to Programming</h9>
-                            <span class="label label-default">CSCI-101 L</span>
-                            <span class="label label-info">3 Units</span>
-                            <span class="pull-right glyphicon glyphicon-plus"></span></div>
-                           
-                        <div class="class-details">
-                            <div class="class-sections">
-                                <div class="panel panel-default">
-                                    <div class="panel-header">
-                                        <h5>Section</h5>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="class-section">
-                                            
-                                            <div class=" row">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr class="info">
-                                                        <td>Code</td>
-                                                        <td>Type</td>
-                                                        <td>Prof</td>
-                                                        <td>Place</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>29901R</td>
-                                                            <td>Lec</td>
-                                                            <td>Redekopp</td>
-                                                            <td>RTH115</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table class="table">
-                                                    <thead >
-                                                        <tr class="info">
-                                                        <td>Hours</td>
-                                                        <td>Days</td>
-                                                        <td>Stats</td>
-                                                        <td>Wait List</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr >
-                                                            <td>2:00pm 3:15PM</td>
-                                                            <td>WThF</td>
-                                                            <td>23/26</td>
-                                                            <td>0</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+            <!--
+                <div class="box">
+                <table width="100%" id="classTable">
+                    <tr>
+                        <th>Course #</th> <th>Course Title</th> <th>Section</th>
+                        <th>Type</th> <th>Units</th> <th>Schedule</th> <th>Location</th>
+                        <th>Grade Option</th> <th>Instructor</th> 
+                    </tr>
+                    <tr style="background-color: #69BB9C">
+                        <td>CSCI-570</td> <td>Analsis of Algorithms</td> <td>30177</td>
+                        <td>Lecture</td> <td>3</td> <td>6:40 - 9:20 pm, W</td> <td>SGM 123</td>
+                        <td>Letter Grade</td> <td>Shahriar Shamsian</td>
+                    </tr>
+                    <tr style="background-color: #69BB9C">
+                        <td></td> <td></td> <td>29913</td>
+                        <td>Discussion</td> <td></td> <td>9  - 9:50 am, F</td> <td>SOS B46</td>
+                        <td></td> <td>Jeffrey Miller</td>
+                    </tr>
+                    <tr style="background-color: #69BB9C">
+                        <td></td> <td></td> <td>30227</td>
+                        <td>Quiz</td> <td></td> <td>8  - 9:50 pm, F</td> <td>TBA</td>
+                        <td></td> <td></td>
+                    </tr>
+                    <tr style="background-color: #E6C40A">
+                        <td>EE-484</td> <td>Communication System Design</td> <td>30628</td>
+                        <td>Lecture</td> <td>3</td> <td>6:30 - 9:20 pm, M</td> <td>KAP 134</td>
+                        <td>Letter Grade</td> <td>Christopher Walker</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                </table>
+                </div>
+            -->
+
+                <div id="course-list">
+                           <div class="course-card panel row-fluid">
+                               <div class="panel-heading course-heading">
+                                    <h9 class="course-title">Introduction to Programming</h9>
+                                    <span class="label label-default">CSCI-101 L</span>
+                                    <span class="label label-info">3 Units</span>
+                                    <span class="pull-right glyphicon glyphicon-plus"></span></div>
+
+                                <div class="class-details">
+                                    <div class="class-sections">
+                                        <div class="panel panel-default">
+                                            <div class="panel-header">
+                                                <h5>Section</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="class-section">
+
+                                                    <div class=" row">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr class="info">
+                                                                <td>Code</td>
+                                                                <td>Type</td>
+                                                                <td>Prof</td>
+                                                                <td>Place</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>29901R</td>
+                                                                    <td>Lec</td>
+                                                                    <td>Redekopp</td>
+                                                                    <td>RTH115</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table class="table">
+                                                            <thead >
+                                                                <tr class="info">
+                                                                <td>Hours</td>
+                                                                <td>Days</td>
+                                                                <td>Stats</td>
+                                                                <td>Wait List</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr >
+                                                                    <td>2:00pm 3:15PM</td>
+                                                                    <td>WThF</td>
+                                                                    <td>23/26</td>
+                                                                    <td>0</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                               </div>
+                           </div>
                        </div>
-                   </div>
-               </div>
+                   
+
+                <br><br>
+
+                <button type="button" class="btn btn-danger btn-lg btn-block">Register</button>
+
+
+        <!-- box, 100% width, "overflow: scroll;" attribute,
+            courses: scroll as well
+        -->
             </div>
-        
-        <br><br>
-        
-        <button type="button" class="btn btn-danger btn-lg btn-block">Register</button>
-        
-        
-<!-- box, 100% width, "overflow: scroll;" attribute,
-    courses: scroll as well
--->
+        </div>
         <script src="flatui/dist/js/vendor/jquery.min.js"></script>
         <script src="jqm/jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
