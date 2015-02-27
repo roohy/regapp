@@ -86,7 +86,7 @@ function renderCourses(course_list){
             return ("TBA");
         var begin_time = mysection.BEGIN_TIME.split('||')[0]; 
         var end_time = mysection.END_TIME.split('||')[0]; 
-        console.log('begin time is ' , begin_time , ' and end time is ' , end_time) ;
+    //    console.log('begin time is ' , begin_time , ' and end time is ' , end_time) ;
         return (begin_time + "-" + end_time) ;
     }
     function getDays(mysection){
@@ -126,15 +126,15 @@ function renderCourses(course_list){
         location = location.split('||')[0] ; 
         return location ; 
     }
-    console.log('in rendering coursessssssss ' , course_list);
-    
+  //  console.log('in rendering coursessssssss ' , JSON.stringify(course_list));
+    localStorage['CurrentSelection'] = JSON.stringify(course_list); 
     $('#course-list').empty();
 //    mycourse_list = JSON.parse(localStorage[depart]); 
         for ( var d in course_list){
 //            if (d>3)
 //                return ; 
             var course = course_list[d] ; 
-            console.log(' rendering course : ' , course  ) ;
+        //    console.log(' rendering course : ' , course  ) ;
             var card = $('<div class="course-card panel row-fluid"></div>');
             var course_heading = $('<div class="panel-heading course-heading"></div>');
             var course_title = $('<h9 class="course-title">' + course.TITLE + '</h9>');
@@ -160,7 +160,7 @@ function renderCourses(course_list){
             
             for ( var s in course.V_SOC_SECTION){   
                 var section = course.V_SOC_SECTION[s] ;
-                console.log('section is ' , section ) ; 
+             //   console.log('section is ' , section ) ; 
                 var class_section2 = $('<div class="class-section">'); 
                 var row = $('<div class=" row"></div>');
                 var table = $('<table class="table"></table>'); 
@@ -282,21 +282,24 @@ function renderCourses(course_list){
 //                                continuing on to CSCI 104.
 //                            </p>
 
+function keyWordSearch(event){
+    var keyWords = event.target.value.split(' '); 
+    var filters = JSON.parse(localStorage.CurrentFilter) ;
+    filters['KEYWORD'] = keyWords ; 
+    var courses = filter_courses(filters); 
+    renderCourses(courses) ; 
+}
 
-
-
-$(function(){
-//    $('.course-card').click(function(event){
-//        courseClick(this);
-//    });
-//        
-    console.log('heellooo??') ; 
-    
-    $('<div class="input-group">'+
+function initializeSearchComponents(){
+    var navbar = $('<div class="input-group">'+
                           '<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">'+
-                          '<span class="input-group-btn"><button type="submit" class="btn"><span class="fui-search"></span></button></span></div>').appendTo('#navbar');
+                          '<span class="input-group-btn"><button type="submit" class="btn"><span class="fui-search"></span></button></span></div>') ; 
     
-    //$('#navbar').navbar();
+    navbar.on('input' , function(event){
+        keyWordSearch(event);
+        });
+    
+    $('#navbar').append(navbar);
     
     //initializing the time picker
      $('#start-time').mobiscroll().time({
@@ -311,7 +314,16 @@ $(function(){
                     display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default 
                     lang: 'pl'        // Specify language like: lang: 'pl' or omit setting to use default 
                 });
+}
+
+
+
+$(function(){
     saveDepartmentToDB(localStorage.DEPT_CODE, true) ;
+    localStorage['CurrentFilter'] = JSON.stringify({'DEPARTMENT_CODES':[localStorage.DEPT_CODE]});
+    initializeSearchComponents() ; 
+    
+    
     
 
 

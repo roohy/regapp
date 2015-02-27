@@ -2,46 +2,51 @@ $(function() {
     console.log('helloooo we are in filters js' );        
 });
 
-// filters : { 'Professor': 'dfdf' , WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'KEYWORD': 'heheheh' , 'UNITS' : 2}
+// filters : {  WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'KEYWORD': ['heheheh','sdfs'] , 'UNITS' : 2}
 function filter_courses(filters){    
     var term = localStorage.TERM;
     
     for ( depart in filters.DEPARTMENT_CODES)
         saveDepartmentToDB(filters.DEPARTMENT_CODES[depart]); 
     
-    
     var courses = courseFilters(filters);
-    console.log('coursessssss are ' , courses ); 
+  //  console.log('coursessssss are ' , courses ); 
     if (courses.length ==0){
         console.log('hichi peida nashod darim return mikonim ' ); 
         return [] ; 
     }
     courses = sectionFilters(courses,filters); 
-    if (courses.length>0 && courses[0].PRIORITY !=undefined){
-        courses = courses.sort(function(current, next){
-            return current.PRIORITY - next.PRIORITY;});
-    }
+//    if (courses.length>0 && courses[0].PRIORITY !=undefined){
+//        courses = courses.sort(function(current, next){
+//            return current.PRIORITY - next.PRIORITY;});
+//    }
     return courses; 
 }
 
 function courseFilters(filters){
-    var courses = getAllCourses(filters.DEPARTMENT_CODES);
-    console.log('filters are ' , filters ) ; 
+    var courses = getAllCourses(filters.DEPARTMENT_CODES , localStorage.TERM);
+ //   console.log('filters are ' , filters ) ; 
     var selectedCourses = [] ; 
     if (filters.KEYWORD != undefined){
-        console.log('we are going to check the keywordddd' ) ; 
-        for ( var i in courses){
-            var course = courses[i];
-            console.log('course is ' , course ); 
-            p = passKeyword(course,filters.KEYWORD);
-            console.log('p is ' , p); 
-            if (p[0]){
-                course['PRIORITY'] = p[1]; 
-                selectedCourses.push(course); 
+    //    console.log('we are going to check the keywordddd' ) ; 
+        for ( var w in filters.KEYWORD){
+            var word = filters.KEYWORD[w]; 
+            var selectedForThisKeyword = [] ; 
+            for ( var i in courses){
+                var course = courses[i];
+            //    console.log('course is ' , course ); 
+                p = passKeyword(course,word);
+            //    console.log('p is ' , p); 
+                if (p == true){
+                   // course['PRIORITY'] = p[1]; 
+                    selectedForThisKeyword.push(course); 
+                }
             }
+            courses = selectedForThisKeyword ;
         }
     }
-     
+    selectedCourses = courses ; 
+    
     if (filters.UNITS != undefined){
         selectedCourses2 = [] ;
         for (var j in selectedCourses){
@@ -84,14 +89,15 @@ function sectionFilters(courses,filters){
     return selectedCourses ;
 }
 
-function getAllCourses(departments){
+function getAllCourses(departments , term){
     var arr = [] ; 
-    console.log('in the getAll Courses hastim ' , departments); 
+//    console.log('in the getAll Courses hastim ' , departments); 
     for (var i  in departments){
         var dep = departments[i] ; 
-        arr = arr.concat(JSON.parse(localStorage.getItem(dep)));
+//        console.log( ' geting the dep = ,' , dep , ' and term = ' , term ) ; 
+        arr = arr.concat(JSON.parse(localStorage[term +dep]));
     }
-    console.log('returning arrr ' , arr); 
+//    console.log('returning arrr ' , arr); 
     return arr ;
 }
 
@@ -100,12 +106,22 @@ function passUnit(course, units){
 }
 
 function passKeyword(course, query){
-    console.log('pass keyword') ; 
+//    console.log('pass keyword') ; 
+    
+    
     if (course.TITLE.toLowerCase().search(query.toLowerCase())!=-1)
-        return [true, 1] ; 
-    if (course.DESCRIPTION.toLowerCase().search(query.toLowerCase())!=-1)
-        return [true , 2];
-    return [false,NaN]; 
+        return true; 
+    for (var c in course.V_SOC_SECTION){
+        var section = course.V_SOC_SECTION[c] ; 
+        if (section.INSTRUCTOR !=null)
+            if (section.INSTRUCTOR.toLowerCase().search(query.toLowerCase())!=-1)
+                return true ; 
+    }
+
+    if (course.DESCRIPTION !=null)
+        if (course.DESCRIPTION.toLowerCase().search(query.toLowerCase())!=-1)
+            return true ;
+    return false; 
     
         
 }
@@ -147,25 +163,25 @@ function passTime(sections , filter){
 
 }
     
-    
-function passProf(sections , filter){
-    console.log('pass proff'); 
-    function getInstructor(sec){
-        return sec['INSTRUCTOR'].toLowerCase() ;  
-    }
-    
-    var professor = filter.Professor.toLowerCase(); 
-    var result = [] ; 
-    for (var i in sections){
-        var section = sections[i]; 
-        var instructor = getInstructor(section) ; 
-        if ( instructor !=null && instructor.search(professor)!=-1)
-            result.push(section); 
-    }
-//    course['V_SOC_SECTION'] = result ;
-//    return [result.length>0 , course] ; 
-    return result ; 
-}
+//    
+//function passProf(sections , filter){
+//    console.log('pass proff'); 
+//    function getInstructor(sec){
+//        return sec['INSTRUCTOR'].toLowerCase() ;  
+//    }
+//    
+//    var professor = filter.Professor.toLowerCase(); 
+//    var result = [] ; 
+//    for (var i in sections){
+//        var section = sections[i]; 
+//        var instructor = getInstructor(section) ; 
+//        if ( instructor !=null && instructor.search(professor)!=-1)
+//            result.push(section); 
+//    }
+////    course['V_SOC_SECTION'] = result ;
+////    return [result.length>0 , course] ; 
+//    return result ; 
+//}
 
 
 function passWeekDays(sections , filter){
