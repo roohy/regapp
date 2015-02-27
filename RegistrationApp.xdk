@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "b26baa3a-f557-416d-b49d-73750727b365",
-      "lastModifiedDate": 1424816288752,
+      "lastModifiedDate": 1424934173402,
       "creationDate": 1424793085565
     },
     "sourceDirectory": "www",
@@ -18,29 +18,7 @@
     "projectFiles": {},
     "projectDirectories": {},
     "libraries": [],
-    "cordovaPlugins": [
-      {
-        "id": "org.apache.cordova.device",
-        "version": "0.2.9",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.splashscreen",
-        "version": "0.3.0",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.dialogs",
-        "version": "0.2.11",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      }
-    ],
+    "cordovaPlugins": [],
     "serviceMethods": [],
     "buildConfigurations": {
       "Android": {

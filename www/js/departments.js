@@ -1,3 +1,8 @@
+
+        var startedDepts = 0;
+        var endedDepts = 0;
+
+
 $(function(){
     //alert("I am getting the depts");
     console.log('in dapartments.js file' );
@@ -5,10 +10,11 @@ $(function(){
 //    department-list
     $(document).on('click', "#department-list li" , function() {
         k2 = $(this); 
+
         localStorage.DEPT_CODE = $(this).attr('dept_code'); 
         window.location = ("./courselist.html"); 
         return false;
-//        window.location="website/nextpage.jsp/param/{YOUR PARAMETER}";
+//      
 });
     
 });
@@ -28,7 +34,7 @@ function setSchools(data){
         
         $("#collapsible-list").append(collapsible);
         $("#collapsible-list").collapsibleset();
-        
+        startedDepts = startedDepts + 1;
         getDepartments(sch_code , setDepartments , NaN , ul) ; 
     }
 }
@@ -45,6 +51,11 @@ function setDepartments(data, ul_element){
         ul_element.append(li); 
     }
     ul_element.listview(); 
+    endedDepts = endedDepts + 1;
+//    alert(endedDepts+ "/"+startedDepts); 
+    if (endedDepts==startedDepts){
+        hideLoading();
+    }
 }
 
 /*

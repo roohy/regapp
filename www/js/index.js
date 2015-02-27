@@ -49,3 +49,6 @@ var app = {
 };
 
 
+function hideLoading(){
+    $('#coverThing').slideUp(500);
+}

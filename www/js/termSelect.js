@@ -1,5 +1,6 @@
 $(function(){
-    
+    localStorage.clear(); 
+    console.log(' in the term select and local storage cleareed ') ; 
     getTerms(NaN , setTerms); 
     $(document).on('click', "#termList li" , function() {
         k = $(this); 
@@ -27,6 +28,10 @@ function setTerms(data){
         ul_element.append(li); 
     }
     ul_element.listview('refresh'); 
+    hideLoading();
+//    alert("haha");
+//    $.mobile.changePage('#container');
+    
 }
 
 
