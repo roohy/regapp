@@ -3,11 +3,23 @@ $(function() {
 });
 
 // filters : {  WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'UNITS' : 2}
+
 function filter_courses(filters){    
     var term = localStorage.TERM;
+    mycounter = filters.DEPARTMENT_CODES.length ; 
+    mycounter2 = 0 ; 
     
-    for ( depart in filters.DEPARTMENT_CODES)
-        saveDepartmentToDB(filters.DEPARTMENT_CODES[depart] , true); 
+    console.log( ' my counter is ' , mycounter , ' and mycounter2 is ' , mycounter2); 
+    for ( depart in filters.DEPARTMENT_CODES){    
+        saveDepartmentToDB(filters.DEPARTMENT_CODES[depart] ,false , filter_courses_callback, filters); 
+    }
+    
+}
+mycounter = 0 ; 
+mycounter2 = 0 ;
+
+function filter_courses_callback(filters){
+    console.log( ' in call back jadide dare seda mishe filter ' , filters ) ; 
     
     var courses = courseFilters(filters);
   //  console.log('coursessssss are ' , courses ); 
@@ -20,7 +32,11 @@ function filter_courses(filters){
 //        courses = courses.sort(function(current, next){
 //            return current.PRIORITY - next.PRIORITY;});
 //    }
+    initialStage = courses ; 
+    renderCourses(courses) ; 
     return courses; 
+    
+    
 }
 
 function keyword_search(keywords){
@@ -47,19 +63,18 @@ function keyword_search(keywords){
 
 
 function courseFilters(filters){
-    
+    var courses = getAllCourses(filters.DEPARTMENT_CODES , localStorage.TERM) ; 
     
     if (filters.UNITS != undefined){
-        selectedCourses2 = [] ;
-        for (var j in selectedCourses){
-            var course = selectedCourses[j]; 
+        selectedCourses = [] ;
+        for (var j in courses){
+            var course = courses[j]; 
             if (passUnit(course, filters.UNITS))
-                selectedCourses2.push(course); 
+                selectedCourses.push(course); 
         }
-        return selectedCourses2 ; 
+        return selectedCourses ; 
     }
-    return selectedCourses; 
-    
+    return courses; 
 }
 
 function sectionFilters(courses,filters){
@@ -99,7 +114,7 @@ function getAllCourses(departments , term){
 //        console.log( ' geting the dep = ,' , dep , ' and term = ' , term ) ; 
         arr = arr.concat(JSON.parse(localStorage[term +dep]));
     }
-//    console.log('returning arrr ' , arr); 
+    console.log('returning arrr ' , arr); 
     return arr ;
 }
 
