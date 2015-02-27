@@ -50,26 +50,27 @@ function getCourses(term, opt_options , opt_successFunction , opt_waitFunction ,
 }
 
 
-function saveDepartmentToDB(department_code , render){
-     
- //   console.log('saving  ' , department_code,  '  to dB'); 
+function saveDepartmentToDB(department_code ,render){
+    console.log(' in save department and render is ' , render ) ; 
     term = localStorage.getItem('TERM'); 
     if (window.localStorage.getItem(term + department_code)!=null){
-     //   console.log('peida shod too local storage :DDDDD ');
         if (render == true){
-            renderCourses(JSON.parse(window.localStorage[term + department_code])); 
+            var a = JSON.parse(window.localStorage[term + department_code]); 
+            renderCourses(a); 
+            initialStage = a ; 
         }
         return ; 
     }
   //  console.log('raftim ke course haro begirim :) department code = ' , department_code ); 
     
-    getCourses(term, department_code, fetchSections , NaN , {'depart':department_code , 'render' : render , 'term':term}) ;
+    getCourses(term, department_code, fetchSections , NaN , {'depart':department_code ,  'term':term ,'render' : render}) ; // ,
 }
 
 counter = 0 ;
 counter2 = 0 ; 
 
 function fetchSections(courses , info){
+    console.log('in fetch section and the info is ' , info ) ; 
     var depart = info.depart ; 
     var term = info.term ; 
 //    console.log(' in fetch sections and depart is ,' , depart , ' and term is ' , term ) ; 
@@ -79,11 +80,12 @@ function fetchSections(courses , info){
         var course_id = courses[i]['COURSE_ID'] ; 
        // console.log('fetching cestions for couse + ' + course_id );
         counter ++ ; 
-         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i , 'render' : info.render , 'term': term });
+         getCourses(term, course_id.toString() , setSections , NaN , {'depart':depart, 'index': i  , 'term': term ,'render' : info.render}); // 
     }
 }
 
 function setSections(sections , info){
+    console.log(' in set section and info i s ' , info ) ; 
     var depart = info.depart ; 
     var term = info.term ;
     index = info.index;
@@ -105,7 +107,10 @@ function setSections(sections , info){
     if ( counter2== counter){
         alert('we are done fetching' ) ; 
         if (info.render == true){
-            renderCourses(a); 
+       //     alert('helloo?????');
+            renderCourses(a);
+            initialStage = a ; 
+//            localStorage['CurrentSelection'] = JSON.stringify(a);
         }
     }
 }

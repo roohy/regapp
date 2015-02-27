@@ -128,6 +128,7 @@ function renderCourses(course_list){
     }
   //  console.log('in rendering coursessssssss ' , JSON.stringify(course_list));
     localStorage['CurrentSelection'] = JSON.stringify(course_list); 
+    
     $('#course-list').empty();
 //    mycourse_list = JSON.parse(localStorage[depart]); 
         for ( var d in course_list){
@@ -281,14 +282,8 @@ function renderCourses(course_list){
 //                                and does not prepare students for 
 //                                continuing on to CSCI 104.
 //                            </p>
-
-function keyWordSearch(event){
-    var keyWords = event.target.value.split(' '); 
-    var filters = JSON.parse(localStorage.CurrentFilter) ;
-    filters['KEYWORD'] = keyWords ; 
-    var courses = filter_courses(filters); 
-    renderCourses(courses) ; 
-}
+var initialStage ; 
+var length = 0 ; 
 
 function initializeSearchComponents(){
     var navbar = $('<div class="input-group">'+
@@ -296,7 +291,20 @@ function initializeSearchComponents(){
                           '<span class="input-group-btn"><button type="submit" class="btn"><span class="fui-search"></span></button></span></div>') ; 
     
     navbar.on('input' , function(event){
-        keyWordSearch(event);
+//        var last_char = event.target.value.charAt(event.target.value.length-1); 
+        
+        var text_length = event.target.value.length ; 
+//        if (last_char == ' '){
+//            previousStage.push(localStorage['CurrentSelection']); 
+//            length = text_length ; 
+//            return ; 
+//        }
+        if (text_length < length){
+            localStorage['CurrentSelection'] = JSON.stringify(initialStage) ; 
+        }
+        length = text_length ; 
+        var keyWords = event.target.value.split(' '); 
+        keyword_search(keyWords);     
         });
     
     $('#navbar').append(navbar);
@@ -319,7 +327,8 @@ function initializeSearchComponents(){
 
 
 $(function(){
-    saveDepartmentToDB(localStorage.DEPT_CODE, true) ;
+    saveDepartmentToDB(localStorage.DEPT_CODE , true) ;
+  //  renderCourses(JSON.parse(localStorage[term + localStorage.DEPT_CODE]); 
     localStorage['CurrentFilter'] = JSON.stringify({'DEPARTMENT_CODES':[localStorage.DEPT_CODE]});
     initializeSearchComponents() ; 
     

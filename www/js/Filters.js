@@ -2,12 +2,12 @@ $(function() {
     console.log('helloooo we are in filters js' );        
 });
 
-// filters : {  WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'KEYWORD': ['heheheh','sdfs'] , 'UNITS' : 2}
+// filters : {  WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'UNITS' : 2}
 function filter_courses(filters){    
     var term = localStorage.TERM;
     
     for ( depart in filters.DEPARTMENT_CODES)
-        saveDepartmentToDB(filters.DEPARTMENT_CODES[depart]); 
+        saveDepartmentToDB(filters.DEPARTMENT_CODES[depart] , true); 
     
     var courses = courseFilters(filters);
   //  console.log('coursessssss are ' , courses ); 
@@ -23,29 +23,31 @@ function filter_courses(filters){
     return courses; 
 }
 
-function courseFilters(filters){
-    var courses = getAllCourses(filters.DEPARTMENT_CODES , localStorage.TERM);
- //   console.log('filters are ' , filters ) ; 
-    var selectedCourses = [] ; 
-    if (filters.KEYWORD != undefined){
-    //    console.log('we are going to check the keywordddd' ) ; 
-        for ( var w in filters.KEYWORD){
-            var word = filters.KEYWORD[w]; 
-            var selectedForThisKeyword = [] ; 
-            for ( var i in courses){
-                var course = courses[i];
-            //    console.log('course is ' , course ); 
-                p = passKeyword(course,word);
-            //    console.log('p is ' , p); 
-                if (p == true){
-                   // course['PRIORITY'] = p[1]; 
-                    selectedForThisKeyword.push(course); 
-                }
+function keyword_search(keywords){
+    
+    var courses = JSON.parse(localStorage['CurrentSelection']) ; 
+    for ( var w in keywords){
+        var word = keywords[w]; 
+        var selectedForThisKeyword = [] ; 
+        for ( var i in courses){
+            var course = courses[i];
+        //    console.log('course is ' , course ); 
+            p = passKeyword(course,word);
+        //    console.log('p is ' , p); 
+            if (p == true){
+               // course['PRIORITY'] = p[1]; 
+                selectedForThisKeyword.push(course); 
             }
-            courses = selectedForThisKeyword ;
         }
+        courses = selectedForThisKeyword ;
     }
-    selectedCourses = courses ; 
+    localStorage['CurrentSelection'] = JSON.stringify(courses);
+    renderCourses(courses);
+}
+
+
+function courseFilters(filters){
+    
     
     if (filters.UNITS != undefined){
         selectedCourses2 = [] ;
@@ -108,7 +110,6 @@ function passUnit(course, units){
 function passKeyword(course, query){
 //    console.log('pass keyword') ; 
     
-    
     if (course.TITLE.toLowerCase().search(query.toLowerCase())!=-1)
         return true; 
     for (var c in course.V_SOC_SECTION){
@@ -117,7 +118,6 @@ function passKeyword(course, query){
             if (section.INSTRUCTOR.toLowerCase().search(query.toLowerCase())!=-1)
                 return true ; 
     }
-
     if (course.DESCRIPTION !=null)
         if (course.DESCRIPTION.toLowerCase().search(query.toLowerCase())!=-1)
             return true ;
