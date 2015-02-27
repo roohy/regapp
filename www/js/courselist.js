@@ -322,6 +322,16 @@ function initializeSearchComponents(){
                     display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default 
                     lang: 'pl'        // Specify language like: lang: 'pl' or omit setting to use default 
                 });
+    $('#Weekdays').change(function(event){
+        var selectedWeekdays = []
+           e = $("#Weekdays .ui-checkbox-on");
+        console.log( ' e is ' , e ,'   lenght is '  , e.length);
+            for ( var i = 0 ; i < e.length ; i++){
+                selectedWeekdays.push(e.get(i).getAttribute('value')); 
+            }
+        console.log('selecated weekdays are ' , selectedWeekdays.toString()); 
+        });
+    
 }
 
 

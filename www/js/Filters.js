@@ -2,7 +2,7 @@ $(function() {
     console.log('helloooo we are in filters js' );        
 });
 
-// filters : {  WeekDays: ['T', 'W'] , BeginTime: "16:00" , EndTime: "17:30" , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'UNITS' : 2}
+// filters : {  WeekDays: ['T', 'W'] , Time: ["16:00", "17:30"] , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'UNITS' : 2}
 
 function filter_courses(filters){    
     var term = localStorage.TERM;
@@ -12,15 +12,15 @@ function filter_courses(filters){
     console.log( ' my counter is ' , mycounter , ' and mycounter2 is ' , mycounter2); 
     for ( depart in filters.DEPARTMENT_CODES){    
         saveDepartmentToDB(filters.DEPARTMENT_CODES[depart] ,false , filter_courses_callback, filters); 
-    }
-    
+    } 
 }
 mycounter = 0 ; 
 mycounter2 = 0 ;
 
 function filter_courses_callback(filters){
-    console.log( ' in call back jadide dare seda mishe filter ' , filters ) ; 
+    console.log( ' in call back jadide dare seda mishe filter=  ' , filters ) ; 
     
+    localStorage.CurrentFilter = JSON.stringify(filters) ; 
     var courses = courseFilters(filters);
   //  console.log('coursessssss are ' , courses ); 
     if (courses.length ==0){
@@ -34,13 +34,17 @@ function filter_courses_callback(filters){
 //    }
     initialStage = courses ; 
     renderCourses(courses) ; 
-    return courses; 
-    
-    
+    localStorage.CurrentFilter = filters;
+
+}
+
+function alterFilter(filter , value) {
+    var currentFilter = JSON.parse(localStorage.CurrentFilter) ; 
+    currentFilter[filter] = value ; 
+    filter_courses(currentFilter) ; 
 }
 
 function keyword_search(keywords){
-    
     var courses = JSON.parse(localStorage['CurrentSelection']) ; 
     for ( var w in keywords){
         var word = keywords[w]; 
@@ -60,7 +64,6 @@ function keyword_search(keywords){
     localStorage['CurrentSelection'] = JSON.stringify(courses);
     renderCourses(courses);
 }
-
 
 function courseFilters(filters){
     var courses = getAllCourses(filters.DEPARTMENT_CODES , localStorage.TERM) ; 
@@ -82,7 +85,7 @@ function sectionFilters(courses,filters){
 
     if (filters.WeekDays !=undefined)
         MyFilters.push(passWeekDays);
-    if (filters.BeginTime != undefined)
+    if (filters.Time != undefined)
         MyFilters.push(passTime); 
     if (filters.Professor !=undefined)
         MyFilters.push(passProf); 
@@ -161,8 +164,8 @@ function getTime(str){
 function passTime(sections , filter){
     console.log('pass time'); 
     
-    var filter_beginTime = getTime(filter.BeginTime) ; 
-    var filter_endTime = getTime(filter.EndTime); 
+    var filter_beginTime = getTime(filter.Time[0]) ; 
+    var filter_endTime = getTime(filter.Time[1]); 
     var result = [] ; 
     for (var i in sections){
         var section = sections[i] ; 
