@@ -24,3 +24,10 @@
     height: 3em;
     font-size: 3em;
 }*/
+
+#login-spinner{
+    height: 100%;
+    with: 100%;
+    padding: 0;
+    margin: 0;
+}

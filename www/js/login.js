@@ -101,10 +101,9 @@ function checkConnection() {
 
 $(function(){
     $('#login-button').click(app.loginClick);
- //   alert('hello???' ) ; 
     if ( navigator.onLine){
-    console.log('yesss online hastim ') ; 
- //       alert('yeeeeessssss' ) ; 
+        console.log('yesss online hastim ') ; 
     }
-    
+    //$('#login-button').html('<img id="login-spinner" src="img/379.GIF">');
+    $('.ui-loader.ui-body-a').hide(1);
 });

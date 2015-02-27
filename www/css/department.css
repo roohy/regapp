@@ -14,12 +14,13 @@
 #menu-icon{
     margin-top: 0.5em;
 }
-#header{
-    background-color: #F1C40F;
-    color: #C0392B;
+.ui-collapsible.ui-collapsible-inset:nth-child(even) h2 a{
+    background-color: #BDC3C7;
 }
-#header a{
-    
-    background-color: #F1C40F;
-    color: #C0392B;
+
+#coverThing{
+    z-index: 100;
+}
+#container{
+    z-index: 2;
 }

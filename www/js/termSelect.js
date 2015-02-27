@@ -28,6 +28,10 @@ function setTerms(data){
         ul_element.append(li); 
     }
     ul_element.listview('refresh'); 
+    hideLoading();
+//    alert("haha");
+//    $.mobile.changePage('#container');
+    
 }
 
 
