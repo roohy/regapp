@@ -231,17 +231,47 @@ function renderCourses(section){
     class_details.append(class_secions);
     card.append(class_details) ;
 
+    function isIn(sect , list ){
+        for ( var iii in list){
+            var ss = list[iii] ; 
+            if (sect.SECTION_ID == ss.SECTION_ID)
+                return true ;
+        }
+        return false ; 
+    }
     
-    var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="schedule">Schedule</button>');
+    var kk ; 
+    var kk2 ; 
+    var flag  = false ; 
+    if ( isIn(section, JSON.parse(localStorage.REGISTERED)) == true){
+              kk = "Unregister";
+              kk2 = "unregister";
+              }
+    else if(isIn(section, JSON.parse(localStorage.SCHEDULED_CLASSES)) == true){
+            kk = "Unschedule" ; 
+        kk2 = 'unschedule' ;
+        }
+    else {
+        kk = 'Schedule' ; 
+        kk2 = 'schedule' ;
+        flag = true ; 
+    }
+        
+    var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="' + kk2 + '"> ' + kk + '</button>');
    
     var removeButton = $('<button class="remButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="schedule">Remove</button>');
+    
+   
     
     scheduleButton[0].__section = section ;
 //    scheduleButton[0].sectionID = section.SECTION_ID ;
    scheduleButton.attr('sectionID' , section.SECTION_ID) ; 
    removeButton.attr('sectionID' , section.SECTION_ID) ; 
     scheduleButton.button(); 
-    removeButton.button(); 
+    removeButton.button() ;
+    if (flag == false )
+        removeButton.button('disable');
+         
     scheduleButton.click(function(event){
         console.log( 'sdfafsafsafasfdsafs') ; 
         e = event ; 
