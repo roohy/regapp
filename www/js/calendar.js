@@ -56,6 +56,11 @@ function addToCalendar(startTime,endTime, dates){ //13:30
     }
     
 }
+function deleteEverything(){
+    for(var i = 0 ; i< document.__calList.length; i++){
+        document.__calList[i].hide();
+    }
+}
 function registerConfirmation(){
     $('#regConPopup').popup('open',{transition: 'pop'});
 }
@@ -246,10 +251,13 @@ function renderCourses(section){
         removeFromCourseBin(event.target.getAttribute('sectionID'));
         $('#calendar_course-list').empty();
         var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
-            for ( var i in myCourseBin){
+        
+            deleteEverything();    
+        for ( var i in myCourseBin){
                 var section = myCourseBin[i] ; 
                 renderCourses(section) ;
         }
+//        event.target.__
         
         
     }); 
@@ -275,7 +283,8 @@ function ClassButtonClicked(section , value , element){
                 return; 
             }
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
-            element.__dom = domObject; 
+            //element.__dom = domObject;
+            document.__calList.push(domObject);
         }
         else{
             console.log(result[1]) ; 
@@ -323,13 +332,13 @@ $(function(){
         renderCourses(section) ;
     }
     
-    
+    document.__calList = [];
     
 });
 
 
 function showMessage(message){
-    $('#messagePopup p').html('message');
+    $('#messagePopup p').html(message);
     $('#messagePopup').popup('open',{transition: 'pop'});
     setTimeout(function(){$('#messagePopup').popup('close');},1500);
 }
