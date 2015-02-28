@@ -19,6 +19,9 @@
     font-size: 1em;
     font-weight: bold;
 }
+.class-sections h5{
+    margin-bottom: 0.5em;
+}
 .course-title{
     font-weight: bold;
     display: block;
@@ -65,3 +68,13 @@ tr.headed td{
 .fui-triangle-down{
     color: #AAAAAA;
 }
+.course-card.panel{
+    padding-bottom: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.class-section{
+    padding-bottom: 0.5em;
+}
+
