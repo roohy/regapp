@@ -24,3 +24,7 @@
 #container{
     z-index: 2;
 }
+
+ul.ui-listview li a{
+    padding-left: 3em;
+}
