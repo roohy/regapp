@@ -239,6 +239,15 @@ function renderCourses(section){
         ClassButtonClicked(event.target.__section , event.target.getAttribute('value') , event.target); 
     });
     scheduleButton.click(function(event){
+        removeFromCourseBin(event.target.getAttribute('sectionID'));
+        $('#calendar_course-list').empty();
+        var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
+            for ( var i in myCourseBin){
+                var section = myCourseBin[i] ; 
+                renderCourses(section) ;
+        }
+        
+        
     }); 
     
     
@@ -270,10 +279,11 @@ function ClassButtonClicked(section , value , element){
         element.setAttribute('value' , 'schedule'); 
         element.__dom.hide() ///or whatever the function is!!!!
         $('#donePopup').popup('open', {transtion:'pop'});
+
         setTimeout(function(){
                    $('#donePopup').popup('close');
     },1500);
-        //Roohy message = "Section has been unscheduled"
+
     }
     else if (value == 'unregister'){
         unRegisterClass(section) ; 
