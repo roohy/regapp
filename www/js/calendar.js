@@ -71,68 +71,167 @@ function setGraded(){
     $('<select><option value="4">4 Units</option><option value="0">Credit</option><option value="-1">Audit</option </select>').appendTo($('.unitDiv'));
 }
 
-function renderCourseTable(sections){
-
-    for ( var s in sections){   
-        var section = sections[s] ;
-     //   console.log('section is ' , section ) ; 
-        var class_details = $('<div class="class-details"></div>') ;
-        var class_section = $('<div class="class-sections"></div>'); 
-        var class_section2 = $('<div class="class-section">'); 
-        var row = $('<div class=" row"></div>');
-        var table = $('<table class="table"></table>'); 
-        var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
-        var tbody = $('<tbody></tbody>') ; 
-        var tr = $('<tr></tr>') ;
-        var td1 = $('<td>'+ section.SECTION+ '</td>') ;
-        var td2 = $('<td>' + getType(section) + '</td>') ; 
-        var td3 = $('<td>' + getInstructor(section) + '</td>' ) ; 
-        var td4 = $('<td>' + getLocation(section) + '</td>') ; 
-        tr.append(td1); 
-        tr.append(td2); 
-        tr.append(td3); 
-        tr.append(td4);
-        tbody.append(tr); 
-        table.append(thead); 
-        table.append(tbody);
-
-        var table2 = $('<table class="table">');
-        var thead2 = $('<thead ><tr class="info"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
-        var tbody2 = $('<tbody></tbody>') ;
-        var tr2 = $('<tr></tr>');
-        var td2_1 = $('<td>'+ getTime(section)+'</td>');
-        var td2_2 = $('<td>' + getDays(section) +'</td>');
-        var td2_3 = $('<td>' + getStats(section) + '</td>');
-        var td2_4 = $('<td>0</td>');
-        tr2.append(td2_1); 
-        tr2.append(td2_2); 
-        tr2.append(td2_3); 
-        tr2.append(td2_4); 
-        tbody2.append(tr2);
-        table2.append(thead2) ; 
-        table2.append(tbody2);
-        var add_bottun = $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');
-//                add_bottun.trigger("create");
-//<div class="ui-btn ui-input-btn ui-shadow">
-//The Button
-//<input type="button" data-corners="false" data-enhanced="true" value="The Button"></input>
-//</div>
-
-
-        add_bottun.button();
-        add_bottun[0].__section = section ; 
-        add_bottun.click(function(event){
-           //TODO-----------------------------------------------------------------------------------------------------------
-        });
-        row.append(table); 
-        row.append(table2) ; 
-        row.append(add_bottun);
-        class_section2.append(row);
-        class_section.append(class_section2);
-        class_details.append(class_section);
+function renderCourses(section){
+    function getUnitString(mycourse){
+        var min_units = mycourse.MIN_UNITS ; 
+        var max_units = mycourse.MAX_UNITS ;
+        var unitString  ; 
+        if (min_units == null || max_units == null){
+            return ("0 Units") ;
+        }
+        if ( min_units == max_units ){
+            unitString = parseFloat(min_units).toString() ;
+            if (min_units==1) unitString+= " Unit" ; 
+            else unitString+= " Units" ;
+        }
+        else
+            unitString = (parseFloat(min_units).toString()) + "-" + (parseFloat(max_units).toString()) + " Units";
+        return unitString; 
     }
+    function getTime(mysection){
+        if (mysection.BEGIN_TIME == null || mysection.END_TIME == null)
+            return ("---") ; 
+        if (mysection.BEGIN_TIME == "TBA")
+            return ("TBA");
+        var begin_time = mysection.BEGIN_TIME.split('||')[0]; 
+        var end_time = mysection.END_TIME.split('||')[0]; 
+    //    console.log('begin time is ' , begin_time , ' and end time is ' , end_time) ;
+        return (begin_time + "-" + end_time) ;
+    }
+    function getDays(mysection){
+        if (mysection.DAY == null)
+            return ('---');
+        return mysection.DAY.split('||')[0]; 
+    }
+    function getStats(mysection){
+        var registered = mysection.REGISTERED; 
+        if (registered == null)
+            registered = 0 ; 
+        var seats = mysection.SEATS ; 
+        return registered.toString() + "/" + seats.toString();
+    }
+    function getType(mysection){
+        var type = mysection.TYPE ; 
+        if (type == null)
+            return ('---');
+        return type; 
+    }
+    function getInstructor(mysection){
+        var inst = mysection.INSTRUCTOR ; 
+        if (inst == null)
+            return ('---');
+        var ins = inst.split('||'); 
+        var result = ins[0].substr(0,ins[0].search(','));
+        for ( var i =1 ; i<ins.length ; i++){
+            result += (", " + ins[i].substr(0,ins[i].search(','))) ;  
+        }
+        return result ;  
+        
+    }
+    function getLocation(mysection){
+        var location = mysection.LOCATION; 
+        if (location == null)
+            return ('---'); 
+        location = location.split('||')[0] ; 
+        return location ; 
+    }
+    
+//    $('#course-list').empty();
+//    mycourse_list = JSON.parse(localStorage[depart]); 
+        
+    var card = $('<div class="course-card panel row-fluid"></div>');
+    var course_heading = $('<div class="panel-heading course-heading"></div>');
+    var course_title = $('<h9 class="course-title">' + section.TITLE + '</h9>');
+    var label_default = $('<span class="label label-default">'+ section.SIS_COURSE_ID +'</span>');   
+    var label_info = $('<span class="label label-info">'+ getUnitString(section) +'</span>');
+    var unit_div = $('<div class="unitDiv"></div>');
+
+//    $('<select><option value="4">4 Units</option><option value="0">Credit</option><option value="-1">Audit</option </select>')
+    var select = $('<select></select>');
+    var minUnits = section.MIN_UNITS ; 
+    var maxUnits = section.MAX_UNITS ; 
+    if ( minUnits != null && maxUnits !=null){
+        for ( var k = minUnits ; k <=maxUnits ; k++){
+            var u ; 
+            if ( k==1) 
+                u=" Unit"; 
+            else 
+                u=" Units"; 
+            var option = $('<option value=' + k.toString() + '>' + k.toString() + u +'</option>'); 
+            select.append(option); 
+        }
+    }
+    var credit = $('<option value="0">Credit</option>');
+    var audit = $('<option value="-1">Audit</option>');
+    select.append(credit);
+    select.append(audit);
+    unit_div.append(select);
+    
+    course_heading.append(course_title); 
+    course_heading.append(label_default) ; 
+    course_heading.append(label_info) ; 
+    card.append(course_heading) ; 
+    card.append(unit_div);
 
 
+    var class_details = $('<div class="class-details"><div>'); 
+    var class_secions = $('<div class="class-sections"></div>') ; 
+    var class_section2 = $('<div class="class-section">'); 
+    var row = $('<div class=" row"></div>');
+    var table = $('<table class="table"></table>'); 
+    var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
+    var tbody = $('<tbody></tbody>') ; 
+    var tr = $('<tr></tr>') ;
+    var td1 = $('<td>'+ section.SECTION+ '</td>') ;
+    var td2 = $('<td>' + getType(section) + '</td>') ; 
+    var td3 = $('<td>' + getInstructor(section) + '</td>' ) ; 
+    var td4 = $('<td>' + getLocation(section) + '</td>') ; 
+    tr.append(td1); 
+    tr.append(td2); 
+    tr.append(td3); 
+    tr.append(td4);
+    tbody.append(tr); 
+    table.append(thead); 
+    table.append(tbody);
+
+    var table2 = $('<table class="table">');
+    var thead2 = $('<thead ><tr class="info"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
+    var tbody2 = $('<tbody></tbody>') ;
+    var tr2 = $('<tr></tr>');
+    var td2_1 = $('<td>'+ getTime(section)+'</td>');
+    var td2_2 = $('<td>' + getDays(section) +'</td>');
+    var td2_3 = $('<td>' + getStats(section) + '</td>');
+    var td2_4 = $('<td>0</td>');
+    tr2.append(td2_1); 
+    tr2.append(td2_2); 
+    tr2.append(td2_3); 
+    tr2.append(td2_4); 
+    tbody2.append(tr2);
+    table2.append(thead2) ; 
+    table2.append(tbody2);
+//            var add_bottun = $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');               
+//
+//            add_bottun.button();
+
+    row.append(table); 
+    row.append(table2) ; 
+    class_section2.append(row);
+
+    class_secions.append(class_section2);
+    class_details.append(class_secions);
+    card.append(class_details) ;
+
+  //  $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');
+    
+   // var scheduleButton = $('<button class="schedButton">Schedule</button>');
+    var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all">Schedule</button>');
+    var registerButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all">Register</button>');
+    scheduleButton.button(); 
+    registerButton.button(); 
+    card.append(scheduleButton) ; 
+    card.append(registerButton) ; 
+    
+    $("#calendar_course-list").append(card);
 }
 
 
@@ -142,6 +241,13 @@ $(function(){
 //    alert("haha");
     initialize(); 
     setGraded(); 
+    
+    var test = {"SECTION_ID":17554,"TERM_CODE":"20151","COURSE_ID":10514,"TITLE":"title e alakiiii " , "SIS_COURSE_ID":"FAPT-105","MIN_UNITS":4.0,"MAX_UNITS":4.0,"NAME":null,"SECTION":"33217D","SESSION":"001","TYPE":"Lecture-Lab","BEGIN_TIME":"09:00","END_TIME":"11:50","DAY":"TH","LOCATION":"HAR203","REGISTERED":null,"INSTRUCTOR":"Liebowitz, Karen","SEATS":18,"ADD_DATE":"2014-05-19T00:00:00","CANCEL_DATE":null,"PUBLISH_FLAG":"Y","PUBLISH_SECTION_FLAG":"Y","V_SOC_COURSE":null}
+    
+    renderCourses(test);
+    
+    
+    
     
     
 });
