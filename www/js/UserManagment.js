@@ -17,15 +17,15 @@ function alreadyExists(section , list){
     }
 
 function addToCourseBin(section){
+    console.log( 'adding section '  , section , ' to the course bin ' ) ; 
     
     if (localStorage.COURSE_BIN == undefined)
-        localStorage.COURSE_BIN = [] ; 
+        localStorage.COURSE_BIN = JSON.stringify([]) ; 
     var myCurrentSections = JSON.parse(localStorage.COURSE_BIN);
     if (!alreadyExists(section , myCurrentSections)){
-        myCurrentSections.push(course) ; 
+        myCurrentSections.push(section) ; 
         localStorage.COURSE_BIN = JSON.stringify(myCurrentSections) ; 
     }
-    
 }
 
 function scheduleClass(section){
