@@ -119,7 +119,7 @@ function setSections(sections , info){
         counter1 = 0 ; 
         counter2 = 0 ;
         
-        alert('we are done fetching' ) ; 
+//        alert('we are done fetching' ) ; 
         if (info.render == true){
        //     alert('helloo?????');
             renderCourses(a);

@@ -154,9 +154,9 @@ function renderCourses(course_list){
             var card = $('<div class="course-card panel row-fluid"></div>');
             var course_heading = $('<div class="panel-heading course-heading"></div>');
             var course_title = $('<h9 class="course-title">' + course.TITLE + '</h9>');
-            var label_default = $('<span class="label label-default">'+ course.SIS_COURSE_ID +'</span>');   
-            var label_info = $('<span class="label label-info">'+ getUnitString(course) +'</span>');
-            var pull_right = $('<span class="pull-right glyphicon glyphicon-plus"></span>') ; 
+            var label_default = $('<span class="label label-warning">'+ course.SIS_COURSE_ID +'</span>');   
+            var label_info = $('<span class="label label-danger">'+ getUnitString(course) +'</span>');
+            var pull_right = $('<span class="pull-right fui-triangle-down"></span>') ; 
             
             course_heading.append(course_title); 
             course_heading.append(label_default) ; 
@@ -180,7 +180,7 @@ function renderCourses(course_list){
                 var class_section2 = $('<div class="class-section">'); 
                 var row = $('<div class=" row"></div>');
                 var table = $('<table class="table"></table>'); 
-                var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
+                var thead = $('<thead ><tr class="headed"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
                 var tbody = $('<tbody></tbody>') ; 
                 var tr = $('<tr></tr>') ;
                 var td1 = $('<td>'+ section.SECTION+ '</td>') ;
@@ -196,7 +196,7 @@ function renderCourses(course_list){
                 table.append(tbody);
                 
                 var table2 = $('<table class="table">');
-                var thead2 = $('<thead ><tr class="info"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
+                var thead2 = $('<thead ><tr class="headed"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
                 var tbody2 = $('<tbody></tbody>') ;
                 var tr2 = $('<tr></tr>');
                 var td2_1 = $('<td>'+ getTime(section)+'</td>');
@@ -248,8 +248,9 @@ function renderCourses(course_list){
     $('.course-card').click(function(event){
         courseClick(this);
     });
+ 
+    hideLoading();   
 }
-
 //                                <div class="class-sections">
 //                                <div class="panel panel-default">
 //                                    <div class="panel-header">

@@ -12,14 +12,21 @@
 }
 .class-details{
    display: none;
+    font-size: 0.9em;
     
+}
+.panel-header h5{
+    font-size: 1em;
+    font-weight: bold;
 }
 .course-title{
     font-weight: bold;
     display: block;
 }
 .class-description{
-    padding: 1em;
+    font-size: 0.9em;
+    padding-left: 1em;
+    padding-right: 0.5em;
 }
 
 table{
@@ -28,4 +35,33 @@ table{
 
 #content{
     padding: 0;
+}
+
+#coverThing{
+    z-index: 100;
+}
+#container{
+    z-index: 2;
+}
+
+.ui-header .menu-icon{
+    margin-top: 0.5em;
+}
+
+button.btn.btn-danger.ui-btn.ui-shadow.ui-corner-all {
+background-color: #E74C3C;
+color: #F1C40F;
+text-shadow: initial;
+}
+
+tr.headed td{
+    background-color: #F1C40F;
+    color: #E74C3C;
+    text-shadow: initial;
+}
+.label{
+    margin-left:0.3em;
+}
+.fui-triangle-down{
+    color: #AAAAAA;
 }
