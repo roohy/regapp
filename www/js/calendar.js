@@ -1,7 +1,7 @@
 var datesInt = {'M':1 , 'T':2,'W':3,'H':4};
 var calendarTable = '#calendarTable';
 
-function addToCalendar(startTime,endTime, dates){
+function addToCalendar(startTime,endTime, dates){ //13:30
     //parsing the strings of startTime and endTime to getout everithing about where to start and where to end.
     var parsedStart = parseInt(startTime.split(":")[0]);
     var parsedStartChange = parseInt(startTime.split(":")[1].split(" ")[0]);
