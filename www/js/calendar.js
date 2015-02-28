@@ -185,7 +185,7 @@ function renderCourses(section){
     var class_section2 = $('<div class="class-section">'); 
     var row = $('<div class=" row"></div>');
     var table = $('<table class="table"></table>'); 
-    var thead = $('<thead class="headed"><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
+    var thead = $('<thead class="headed"><tr class="headed"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
     var tbody = $('<tbody></tbody>') ; 
     var tr = $('<tr></tr>') ;
     var td1 = $('<td>'+ section.SECTION+ '</td>') ;
@@ -201,7 +201,7 @@ function renderCourses(section){
     table.append(tbody);
 
     var table2 = $('<table class="table">');
-    var thead2 = $('<thead ><tr class="info"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
+    var thead2 = $('<thead ><tr class="headed"><td>Hours</td><td>Days</td><td>Stats</td><td>Wait List</td></tr></thead>');
     var tbody2 = $('<tbody></tbody>') ;
     var tr2 = $('<tr></tr>');
     var td2_1 = $('<td>'+ getTime(section)+'</td>');
@@ -243,6 +243,7 @@ function renderCourses(section){
     
     
     card.append(scheduleButton) ; 
+    card.append(removeButton);
     
     $("#calendar_course-list").append(card);
 }
