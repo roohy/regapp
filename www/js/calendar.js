@@ -295,7 +295,6 @@ $(function(){
   //  addToCalendar("8:00","10:00",list);
 //    alert("haha");
     initialize(); 
-    setGraded(); 
     
     var test = {"SECTION_ID":17554,"TERM_CODE":"20151","COURSE_ID":10514,"TITLE":"title e alakiiii " , "SIS_COURSE_ID":"FAPT-105","MIN_UNITS":4.0,"MAX_UNITS":4.0,"NAME":null,"SECTION":"33217D","SESSION":"001","TYPE":"Lecture-Lab","BEGIN_TIME":"09:00","END_TIME":"11:50","DAY":"TH","LOCATION":"HAR203","REGISTERED":null,"INSTRUCTOR":"Liebowitz, Karen","SEATS":18,"ADD_DATE":"2014-05-19T00:00:00","CANCEL_DATE":null,"PUBLISH_FLAG":"Y","PUBLISH_SECTION_FLAG":"Y","V_SOC_COURSE":null};
     
