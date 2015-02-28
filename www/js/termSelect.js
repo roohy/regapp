@@ -1,5 +1,5 @@
 $(function(){
-    localStorage.clear(); 
+  //  localStorage.clear(); 
     console.log(' in the term select and local storage cleareed ') ; 
     getTerms(NaN , setTerms); 
     $(document).on('click', "#termList li" , function() {
