@@ -239,6 +239,15 @@ function renderCourses(section){
         ClassButtonClicked(event.target.__section , event.target.getAttribute('value') , event.target); 
     });
     scheduleButton.click(function(event){
+        removeFromCourseBin(event.target.getAttribute('sectionID'));
+        $('#calendar_course-list').empty();
+        var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
+            for ( var i in myCourseBin){
+                var section = myCourseBin[i] ; 
+                renderCourses(section) ;
+        }
+        
+        
     }); 
     
     

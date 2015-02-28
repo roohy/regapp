@@ -33,6 +33,19 @@ function addToCourseBin(section){
         return "Section already exists in your coursebin."; 
 }
 
+function removeFromCourseBin(sectionID){
+  
+    var myCurrentSections = JSON.parse(localStorage.COURSE_BIN);
+    for ( var i in myCurrentSections){
+        var c = myCurrentSections[i] ; 
+        if (c.SECTION_ID == sectionID){
+            myCurrentSections.splice(i,1); 
+        }
+    }
+    
+        localStorage.COURSE_BIN = JSON.stringify(myCurrentSections) ; 
+}
+
 function scheduleClass(section){
     function sectionIntersection(section , section2){
       //  console.log( 'tabe avalie : section ' , section , '      ' , section2);
