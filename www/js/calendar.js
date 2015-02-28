@@ -148,8 +148,8 @@ function renderCourses(section){
     var card = $('<div class="course-card panel row-fluid"></div>');
     var course_heading = $('<div class="panel-heading course-heading"></div>');
     var course_title = $('<h9 class="course-title">' + section.TITLE + '</h9>');
-    var label_default = $('<span class="label label-default">'+ section.SIS_COURSE_ID +'</span>');   
-    var label_info = $('<span class="label label-info">'+ getUnitString(section) +'</span>');
+    var label_default = $('<span class="label label-warning">'+ section.SIS_COURSE_ID +'</span>');   
+    var label_info = $('<span class="label label-danger">'+ getUnitString(section) +'</span>');
     var unit_div = $('<div class="unitDiv"></div>');
 
 //    $('<select><option value="4">4 Units</option><option value="0">Credit</option><option value="-1">Audit</option </select>')
@@ -227,9 +227,12 @@ function renderCourses(section){
     
     var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="schedule">Schedule</button>');
    
+    var removeButton = $('<button class="remButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="schedule">Remove</button>');
+    
     scheduleButton[0].__section = section ;
 //    scheduleButton[0].sectionID = section.SECTION_ID ;
    scheduleButton.attr('sectionID' , section.SECTION_ID) ; 
+   removeButton.attr('sectionID' , section.SECTION_ID) ; 
      scheduleButton.button(); 
     scheduleButton.click(function(event){
         e = event ; 
@@ -264,7 +267,9 @@ function ClassButtonClicked(section , value , element){
         element.setAttribute('value' , 'schedule'); 
         element.__dom.hide() ///or whatever the function is!!!!
         $('#donePopup').popup('open', {transtion:'pop'});
-        setTimeout(funtion(){$('#donePopup').popup('close');},1500);
+        setTimeout(function(){
+                   $('#donePopup').popup('close');
+    },1500);
         //Roohy message = "Section has been unscheduled"
     }
     else if (value == 'unregister'){
