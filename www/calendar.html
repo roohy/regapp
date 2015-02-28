@@ -132,20 +132,21 @@
                 </div>
             -->
 
-                <div id="course-list">
+                <div id="calendar_course-list">
+<!--
                            <div class="course-card panel row-fluid">
                                <div class="panel-heading course-heading">
                                     <h9 class="course-title">Introduction to Programming</h9>
                                     <span class="label label-default">CSCI-101 L</span>
                                     <span class="label label-info">3 Units</span></div>
                                     <div class="unitDiv">
-                                    <!--<label for="select-choice-0" class="select">Shipping method:</label>
+                                    <label for="select-choice-0" class="select">Shipping method:</label>
                                     <select name="select-choice-0" id="select-choice-0">
                                         <option value="1">1</option>
                                         <option value="4">4</option>
                                         <option value="0">Credit</option>
                                         <option value="-1">Audit</option>
-                                    </select>-->
+                                    </select>
                                     </div>
                                 <div class="class-details">
                                     <div class="class-sections">
@@ -195,13 +196,14 @@
                                <button class="schedButton">Schedule</button>
                                <button class="schedButton">Register</button>
                            </div>
+-->
                        </div>
                    
 
                 <br><br>
 
-                <button type="button" class="btn btn-danger btn-lg btn-block ctrl-btn" id="schedButton">Schedule</button>
-                <button type="button" class="btn btn-danger btn-lg btn-block ctrl-btn" id="regButton">Register</button>
+<!--                <button type="button" class="btn btn-danger btn-lg btn-block ctrl-btn" id="schedButton">ScheduleALL</button>-->
+                <button type="button" class="btn btn-danger btn-lg btn-block ctrl-btn" id="regButton">RegisterALL</button>
                 <!--<div data-role="page" data-dialog="true" id="regConPopup">
                             <div data-role="header">
                             <h2>Are you sure?</h2>
@@ -227,11 +229,11 @@
                             <h2>Confirmation</h2>
                         </div>
                         <div class="ui-content" role="main">
-                            <h2>Are you sure you wish to register in these classes?</h2>
-                            <p>You will be enrolled and have to take the exams and do as course instructor says!!!</p>
+                            <h2>All your scheduled classes will be registered. Are you sure?</h2>
+<!--                            <p>You will be enrolled and have to take the exams and do as course instructor says!!!</p>-->
                             <div class="ui-grid-a">
                                 <div class="ui-block-a">
-                                    <a href="#" id="exit-button" class="ui-btn ui-btn-b ui-shadow ui-corner-all">Exit</a>
+                                    <a href="#" id="yes-button" class="ui-btn ui-btn-b ui-shadow ui-corner-all">Yes</a>
                                 </div>
                                 <div class="ui-block-b">
                                     <a href="#" id="cancel-button" class="ui-btn ui-shadow ui-corner-all">Cancel</a>
@@ -273,6 +275,9 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/calendar.js"></script>
+        <script type="text/javascript" src="js/UserManagment.js"></script>
+
+
 
     </body>
 </html>
