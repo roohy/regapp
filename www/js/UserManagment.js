@@ -46,6 +46,21 @@ function removeFromCourseBin(sectionID){
         localStorage.COURSE_BIN = JSON.stringify(myCurrentSections) ; 
 }
 
+function removeFromSchedule(sectionID){
+    if (localStorage.SCHEDULED_CLASSES == undefined)
+        return ; 
+    var myCurrentSections = JSON.parse(localStorage.SCHEDULED_CLASSES);
+    for ( var i in myCurrentSections){
+        var c = myCurrentSections[i] ; 
+        if (c.SECTION_ID == sectionID){
+            myCurrentSections.splice(i,1); 
+        }
+    }
+    
+        localStorage.SCHEDULED_CLASSES = JSON.stringify(myCurrentSections) ; 
+
+}
+
 function scheduleClass(section){
     function sectionIntersection(section , section2){
       //  console.log( 'tabe avalie : section ' , section , '      ' , section2);

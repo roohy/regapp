@@ -257,10 +257,11 @@ function renderCourses(section){
         if(isIn(section, JSON.parse(localStorage.SCHEDULED_CLASSES)) == true){
             kk = "Unschedule" ; 
         kk2 = 'unschedule' ;
+            flag = true ; 
             flag2 = true ; 
         }
     }
-    if (flag2 == false) {
+    if (flag2 == false) {  // just in the course bin 
         kk = 'Schedule' ; 
         kk2 = 'schedule' ;
         flag = true ; 
@@ -288,14 +289,17 @@ function renderCourses(section){
     });
     removeButton.click(function(event){
         removeFromCourseBin(event.target.getAttribute('sectionID'));
+        removeFromSchedule(event.target.getAttribute('sectionID')); 
         $('#calendar_course-list').empty();
         var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
         
-            deleteEverything();    
+        deleteEverything();    
         for ( var i in myCourseBin){
                 var section = myCourseBin[i] ; 
                 renderCourses(section) ;
         }
+        
+        
 //        event.target.__
         
         
@@ -324,8 +328,8 @@ function ClassButtonClicked(section , value , element){
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
             //element.__dom = domObject;
             document.__calList.push(domObject);
-            button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
-            button.button("disable");
+//            button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
+//            button.button("disable");
             
         }
         else{

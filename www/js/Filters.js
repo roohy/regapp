@@ -73,6 +73,9 @@ function keyword_search(keywords){
 function courseFilters(filters){
     var courses = getAllCourses(filters.DEPARTMENT_CODES , localStorage.TERM) ; 
     
+    
+    
+    
     if (filters.UNITS != undefined){
         selectedCourses = [] ;
         for (var j in courses){
@@ -143,6 +146,8 @@ function passKeyword(course, query){
             if (section.INSTRUCTOR.toLowerCase().search(query.toLowerCase())!=-1)
                 return true ; 
     }
+    if (course.SIS_COURSE_ID.toLocaleLowerCase().search(query.toLowerCase())!=-1)
+        return true ; 
     if (course.DESCRIPTION !=null)
         if (course.DESCRIPTION.toLowerCase().search(query.toLowerCase())!=-1)
             return true ;
