@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
     // Application Constructor
     initialize: function() {
@@ -252,64 +234,6 @@ function renderCourses(course_list){
  
     hideLoading();   
 }
-//                                <div class="class-sections">
-//                                <div class="panel panel-default">
-//                                    <div class="panel-header">
-//                                        <h5>Sections</h5>
-//                                    </div>
-//                                    <div class="panel-body">
-
-//                            <div class="class-sections">
-//                                <div class="panel panel-default">
-//                                    <div class="panel-header">
-//                                        <h5>Sections</h5>
-//                                    </div>
-//                                    <div class="panel-body">
-//                                        <div class="class-section">
-//                                            
-//                                            <div class=" row">
-//                                                
-//                                                <table class="table">
-//                                                    <thead >
-//                                                        <tr class="info">
-//                                                        <td>Hours</td>
-//                                                        <td>Days</td>
-//                                                        <td>Stats</td>
-//                                                        <td>Wait List</td>
-//                                                        </tr>
-//                                                    </thead>
-//                                                    <tbody>
-//                                                        <tr >
-//                                                            <td>2:00pm 3:15PM</td>
-//                                                            <td>WThF</td>
-//                                                            <td>23/26</td>
-//                                                            <td>0</td>
-//                                                        </tr>
-//                                                    </tbody>
-//                                                </table>
-//                                                <button class="btn  btn-danger">Add</button>
-//                                            </div>
-//                                        </div>
-//                                    </div>
-//                                </div>
-//                            </div>
-
-//    <div id="course-list">
-//       <div class="course-card panel row-fluid">
-//           <div class="panel-heading course-heading">
-//                <h9 class="course-title">Introduction To programming</h9>
-//                <span class="label label-default">CSCI-101 L</span>
-//                <span class="label label-info">3 Units</span>
-//               <span class="pull-right glyphicon glyphicon-plus"></span></div>
-
-//                        <div class="class-details">
-//                            <p class="class-description">
-//                                30399-This section of CSCI 101 is 
-//                                reserved for non-majors. It is a 
-//                                terminal course in basic programming 
-//                                and does not prepare students for 
-//                                continuing on to CSCI 104.
-//                            </p>
 var initialStage ; 
 var length = 0 ; 
 
@@ -399,7 +323,7 @@ $(function(){
   //  renderCourses(JSON.parse(localStorage[term + localStorage.DEPT_CODE]); 
     localStorage['CurrentFilter'] = JSON.stringify({'DEPARTMENT_CODES':[localStorage.DEPT_CODE]});
     initializeSearchComponents() ; 
-    
+    $('<label class="header-filter" for="emptySpaceSwitch">Only Show Classes With Empty Space</label><input type="checkbox" checked data-toggle="switch" name="emptySpaceSwitch" data-on-color="danger" id="emptySpaceSwitch" />').appendTo($('.spaceInput'));
     
 
 
