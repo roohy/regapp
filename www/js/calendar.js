@@ -58,6 +58,7 @@ function addToCalendar(startTime,endTime, dates){ //13:30
     return result;
 }
 function deleteEverything(){
+    console.log( ' deleting everything ' ) ; 
     for(var i = 0 ; i< document.__calList.length; i++){
         document.__calList[i].hide();
     }
@@ -293,7 +294,8 @@ function renderCourses(section){
         $('#calendar_course-list').empty();
         var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
         
-        deleteEverything();    
+        deleteEverything();   
+    
         for ( var i in myCourseBin){
                 var section = myCourseBin[i] ; 
                 renderCourses(section) ;
@@ -337,6 +339,18 @@ function ClassButtonClicked(section , value , element){
         }
     }
     else if(value == 'unschedule'){
+        
+        var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
+        
+        deleteEverything();   
+    
+        for ( var i in myCourseBin){
+                var section = myCourseBin[i] ; 
+                renderCourses(section) ;
+        }
+        
+        
+        
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
         element.setAttribute('value' , 'schedule'); 
