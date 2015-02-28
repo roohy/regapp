@@ -285,6 +285,9 @@ function ClassButtonClicked(section , value , element){
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
             //element.__dom = domObject;
             document.__calList.push(domObject);
+            button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
+            button.button("disable");
+            
         }
         else{
             console.log(result[1]) ; 
@@ -294,7 +297,10 @@ function ClassButtonClicked(section , value , element){
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
         element.setAttribute('value' , 'schedule'); 
-        element.__dom.hide() ///or whatever the function is!!!!
+        //element.__dom.hide() ///or whatever the function is!!!!
+        button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
+            button.button("enable");
+        
         $('#donePopup').popup('open', {transtion:'pop'});
 
         setTimeout(function(){
@@ -306,6 +312,8 @@ function ClassButtonClicked(section , value , element){
         unRegisterClass(section) ; 
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
+        button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
+            button.button("enable");
         element.setAttribute('value' , 'schedule'); 
         // Roohy message = "Section was successfuly unregistered" 
     }
