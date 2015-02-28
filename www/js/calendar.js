@@ -264,7 +264,7 @@ function ClassButtonClicked(section , value , element){
         element.setAttribute('value' , 'schedule'); 
         element.__dom.hide() ///or whatever the function is!!!!
         $('#donePopup').popup('open', {transtion:'pop'});
-        setTimeout(funtion(){$('#donePopup').popup('close');},1500);
+        setTimeout(function(){$('#donePopup').popup('close');},1500);
         //Roohy message = "Section has been unscheduled"
     }
     else if (value == 'unregister'){
