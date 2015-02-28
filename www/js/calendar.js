@@ -238,6 +238,8 @@ function renderCourses(section){
         e = event ; 
         ClassButtonClicked(event.target.__section , event.target.getAttribute('value') , event.target); 
     });
+    scheduleButton.click(function(event){
+    }); 
     
     
     card.append(scheduleButton) ; 
