@@ -25,7 +25,10 @@ function addToCourseBin(section){
     if (!alreadyExists(section , myCurrentSections)){
         myCurrentSections.push(section) ; 
         localStorage.COURSE_BIN = JSON.stringify(myCurrentSections) ; 
+        return "Successfully added to your coursebin.";  
     }
+    else
+        return "Section already exists in your coursebin."; 
 }
 
 function scheduleClass(section){

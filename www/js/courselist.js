@@ -221,7 +221,14 @@ function renderCourses(course_list){
                 add_bottun.button();
                 add_bottun[0].__section = section ; 
                 add_bottun.click(function(event){
-                    addToCourseBin(event.target.__section); 
+                    var message = addToCourseBin(event.target.__section);
+                    $('#addCourseResponse .popupMessage').html(message);
+                    $('#addCourseResponse').popup('open',{transition:'pop'});
+                    setTimeout(function(){
+                        
+                    $('#addCourseResponse').popup('close');
+                    },1500);
+                    return false;
                 });
                 row.append(table); 
                 row.append(table2) ; 
