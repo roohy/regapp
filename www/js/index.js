@@ -55,7 +55,7 @@ function hideLoading(){
 }
 
 function navbarLinkHandler(target){
-    alert("haha");
+//    alert("haha");
     window.location = $(target).attr('hrefer');
     return false;
 }
