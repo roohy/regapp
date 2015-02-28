@@ -219,6 +219,7 @@ function renderCourses(course_list){
                 
                 
                 add_bottun.button();
+                section['TITLE'] = course.TITLE; 
                 add_bottun[0].__section = section ; 
                 add_bottun.click(function(event){
                     var message = addToCourseBin(event.target.__section);

@@ -36,7 +36,7 @@ function scheduleClass(section){
         var days1 = section.DAY ; 
         var days2 = section2.DAY; 
         var commonDays = days1.filter(function(value) { 
-                                   return days2.indexOf(value) > -1;
+                                   return (days2.indexOf(value)>-1);
                                     });
         if (commonDays.length ==0)
             return false ;
@@ -62,16 +62,17 @@ function scheduleClass(section){
         }
         return [false , null ] ; 
     }
-    
-    if (localStorage.SCHEDULED_CLASSES == undefined)
-        localStorage.SCHEDULED_CLASSES = [] ;
+    console.log('asan seda zade mishe ? ' );
+    if (localStorage.SCHEDULED_CLASSES == undefined){
+        localStorage.SCHEDULED_CLASSES = JSON.stringify([]) ;
+    }
     var myCurrentscheduledClasses = JSON.parse(localStorage.SCHEDULED_CLASSES);
-    if (!alreadyExists(section , myCurrentSections)){
+    if (!alreadyExists(section , myCurrentscheduledClasses)){
         var intersect = hasIntersection(section , myCurrentscheduledClasses) ; 
         if ( intersect[0] == true)
             return [false , 'This section has intersection with section ' + intersect[1].SECTION ] ; 
-        myCurrentSections.push(course) ; 
-        localStorage.COURSE_BIN = JSON.stringify(myCurrentSections); 
+        myCurrentscheduledClasses.push(section) ; 
+        localStorage.SCHEDULED_CLASSES = JSON.stringify(myCurrentscheduledClasses); 
         return [true , 'Section scheduled successfully'] ; 
     }
     else 
@@ -79,15 +80,35 @@ function scheduleClass(section){
 
 }
 
-function RegisterCourse(sections){
-    if (localStorage.REGISTERED == undefined)
-        localStorage.REGISTERED = [] ; 
-    var myCurrentRegistered = JSON.parse(localStorage.REGISTERED) ; 
-    if (!alreadyExists(section , myCurrentRegistered )){
-        myCurrentRegistered.push(section) ; 
-        localStorage.REGISTERED = JSON.stringify(myCurrentRegistered); 
+function unscheduleClass(section){
+    var myCurrentscheduledClasses = JSON.parse(localStorage.SCHEDULED_CLASSES);
+    console.log( 'before unsecehduling ' , myCurrentscheduledClasses) ; 
+    for ( var i in myCurrentscheduledClasses){
+        var sec = myCurrentscheduledClasses[i] ; 
+        if (section.SECTION_ID == sec.SECTION_ID){
+            myCurrentscheduledClasses.splice(i,1); 
+        }
     }
+    console.log( 'after unsecehduling ' , myCurrentscheduledClasses) ; 
+    localStorage.SCHEDULED_CLASSES = JSON.stringify(myCurrentscheduledClasses) ; 
+
 }
+
+function RegisterCourses(sections){
+    if (localStorage.REGISTERED == undefined)
+        localStorage.REGISTERED = JSON.stringify([]) ; 
+    var myCurrentRegistered = JSON.parse(localStorage.REGISTERED) ; 
+    
+    for ( var i in sections){
+        var section = sections[i] ; 
+        if (!alreadyExists(section , myCurrentRegistered )){
+            myCurrentRegistered.push(section) ; 
+        }
+    }
+    localStorage.REGISTERED = JSON.stringify(myCurrentRegistered); 
+}
+
+
 
 function getCourseBin(){
     if (localStorage.COURSE_BIN == undefined)
