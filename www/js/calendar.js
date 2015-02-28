@@ -21,7 +21,7 @@ function addToCalendar(startTime,endTime, dates){ //13:30
         columnList.push(datesInt[day]+1);
         console.log("day is " +day);
     }
-    
+    console.log(columnList);
     
     var startPosition;
     var endPosition = {};
@@ -32,7 +32,8 @@ function addToCalendar(startTime,endTime, dates){ //13:30
     var endRow = $(calendarTable+' tr')[endRowCount+1];
     startRow = $(startRow);
     endRow =$(endRow);
-    for(i in columnList){
+    for(i = 0 ; i<columnList.length; i++){
+        console.log("calendar is here "+i);
         var day = columnList[i];
         startPosition = $(startRow.children("td")[day]).position();
         endPosition.right= $(endRow.children("td")[day]).position().left+$(endRow.children("td")[day]).width();
@@ -52,9 +53,9 @@ function addToCalendar(startTime,endTime, dates){ //13:30
         console.log(result.position());
         console.log(result.height());
         console.log("day is "+day);
-        return result;
+        
     }
-    
+    return result;
 }
 function deleteEverything(){
     for(var i = 0 ; i< document.__calList.length; i++){
