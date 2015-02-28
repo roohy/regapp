@@ -78,3 +78,42 @@ tr.headed td{
     padding-bottom: 0.5em;
 }
 
+#nav-panel-right .header{
+    
+}
+#nav-panel-right .header-filter{
+    font-size: 0.9em;
+    display: inline-block;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}/*
+#time-container .header-filter{
+    float: left;
+}
+#time-container input{
+    display: inline-block;
+    float:right;
+    width: 30%;
+}*/
+#department-list{
+    font-size: 0.7em;
+}
+
+#nav-panel-right .ui-checkbox{
+    margin:0;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 0.3em;
+    border-radius: 0;
+}
+
+#nav-panel-right .ui-checkbox label.ui-btn.ui-btn-active{
+    background-color: #E74C3C;
+    border-color: #C0392B;
+    color: #F1C40F;
+    
+}
+span.checkSpan{
+    display: inline-block;
+    width: 1em;
+}

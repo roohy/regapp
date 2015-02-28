@@ -21,13 +21,13 @@
     <body  >
        <div id="container"  data-role="page">
            <div data-role="panel" id="nav-panel-right" data-position="right" >
-               <div data-role="header">
+               <div data-role="header" class="header">
                     <h1>Filters</h1>
                </div>
                <div data-role="content" class="ui-corner-all">
                     <div class="ui-field-contain ui-mini" >
                         <fieldset data-role="controlgroup" data-type="horizontal" id="Weekdays">
-                            <legend>Date: </legend>
+                            <legend class="header-filter">Date: </legend>
                             <input type="checkbox" name="checkbox-monday" value="M" id="checkbox-monday" class="custom" checked>
                             <label for="checkbox-monday" value="M">M</label>
                             
@@ -53,20 +53,22 @@
                         
                         <fieldset data-role="controlgroup" data-type="horizontal" id="time-container">
                                 <div data-role="fieldcontain" class="demo-cont" id="demo_cont_time">
-                                    <label for="start-time">Start Time</label>
-                                    <input type="text" id="start-time" />  
-                                </div>
+                                    <label for="start-time" class="header-filter">Start Time</label>
+                                    <input type="text" id="start-time" place-holder="Start Time" class="input-time"/>  
+                                    <div class="clearfix"></div>
+                            </div>
                             <div data-role="fieldcontain" class="demo-cont" id="demo_cont_time2">
-                                    <label for="end-time">End Time</label>
-                                    <input type="text" id="end-time" />  
-                                </div>
+                                    <label for="end-time" class="header-filter">End Time</label>
+                                    <input type="text" id="end-time" class="input-time" place-holder="End Time"/>  
+                                    <div class="clearfix"></div>    
+                            </div>
                             
 
                         </fieldset>
                    </div>
                                 <div class=""></div>
                                 <div id="department-list">
-                                    <h6>Department Selection</h6>
+                                    <h6 class="header-filter">Department Selection</h6>
                                        <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
                                             <div data-role="collapsible">
                                                 <h2>Viterbi School Of Eng</h2>
