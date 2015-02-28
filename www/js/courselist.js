@@ -62,6 +62,15 @@ function courseClick(event){
         $(event).children(".class-details").slideToggle(1000,function(){return;});
 }
 
+function nothingFound(){
+    var card = $('<div class="course-card panel row-fluid"></div>');
+    
+    var coure_heading = $('<div class="panel-heading course-heading"><h9 class="course-title">Nothing Found</h9></div>');
+    card.append(coure_heading); 
+    $("#course-list").append(card);
+    
+}
+
 function renderCourses(course_list){
     function getUnitString(mycourse){
         var min_units = mycourse.MIN_UNITS ; 
@@ -126,11 +135,17 @@ function renderCourses(course_list){
         location = location.split('||')[0] ; 
         return location ; 
     }
-  //  console.log('in rendering coursessssssss ' , JSON.stringify(course_list));
+    
+    console.log('in rendering coursessssssss ' , course_list);
     localStorage['CurrentSelection'] = JSON.stringify(course_list); 
     
     $('#course-list').empty();
 //    mycourse_list = JSON.parse(localStorage[depart]); 
+    if ( course_list.length == 0){
+        nothingFound(); 
+        return ;
+    }
+        
         for ( var d in course_list){
 //            if (d>3)
 //                return ; 
@@ -204,6 +219,10 @@ function renderCourses(course_list){
                 
                 
                 add_bottun.button();
+                add_bottun[0].__section = section ; 
+                add_bottun.click(function(event){
+                    addToCourseBin(event.target.__section); 
+                });
                 row.append(table); 
                 row.append(table2) ; 
                 row.append(add_bottun);
@@ -322,16 +341,45 @@ function initializeSearchComponents(){
                     display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default 
                     lang: 'pl'        // Specify language like: lang: 'pl' or omit setting to use default 
                 });
-//    $('#Weekdays input').change(function(event
-//        alert( 'cl
-//        var selectedWeekdays = []
-//        e = $("#Weekdays .ui-checkbox-on");
-//        console.log( ' e is ' , e ,'   lenght is '  , e.length);
-//        for ( var i = 0 ; i < e.length ; i++){
-//            selectedWeekdays.push(e.get(i).getAttribute('value')); 
-//        }
-//        console.log('selecated weekdays are ' , selectedWeekdays.toString()); 
-//    });
+    
+    $('#Weekdays').on('change', function(event){
+        var newVal = event.target.getAttribute('value');
+        var selectedWeekdays = []
+        e = $("#Weekdays .ui-checkbox-on");
+        var flag = false ;
+        for ( var i = 0 ; i < e.length ; i++){
+            var val = e.get(i).getAttribute('value') ; 
+            if ( val != newVal)
+                selectedWeekdays.push(val);
+            else{
+                flag = true;}
+        }
+        if (flag == false)
+            selectedWeekdays.push(newVal);
+        console.log( 'selected weekdays are ' , selectedWeekdays) ;
+        alterFilter('WeekDays' , selectedWeekdays) ; 
+    });
+    
+    $("#time-container").change(function(event){
+        function extractTime(str){
+            var hour = parseInt(str.substr(0,2)); 
+            var ampm = str.charAt(str.length-2); 
+            if (ampm == "P" && hour!=12)
+                hour +=12 ;
+            return hour.toString() + str.substr(2,3); 
+            
+        }
+        
+        var time = event.target.value ; 
+        var start_time = $("#start-time").val() ;
+        var end_time = $("#end-time").val()  ; 
+        if ( start_time == "" || end_time =="")
+            return ; 
+        start_time = extractTime(start_time) ; 
+        end_time = extractTime(end_time) ; 
+        alterFilter('Time' , [start_time , end_time]); 
+    });
+    
     
 }
 
@@ -342,7 +390,6 @@ $(function(){
   //  renderCourses(JSON.parse(localStorage[term + localStorage.DEPT_CODE]); 
     localStorage['CurrentFilter'] = JSON.stringify({'DEPARTMENT_CODES':[localStorage.DEPT_CODE]});
     initializeSearchComponents() ; 
-    
     
     
 

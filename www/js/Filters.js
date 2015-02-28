@@ -5,10 +5,10 @@ $(function() {
 // filters : {  WeekDays: ['T', 'W'] , Time: ["16:00", "17:30"] , 'HasFreeSpace': harchi!! , 'DEPARTMENT_CODES' : ['FAPT' , 'CSCI'] , 'UNITS' : 2}
 
 function filter_courses(filters){    
+    console.log ( ' in the filter_course function and filters are ' , filters) ; 
     var term = localStorage.TERM;
     mycounter = filters.DEPARTMENT_CODES.length ; 
     mycounter2 = 0 ; 
-    
     console.log( ' my counter is ' , mycounter , ' and mycounter2 is ' , mycounter2); 
     for ( depart in filters.DEPARTMENT_CODES){    
         saveDepartmentToDB(filters.DEPARTMENT_CODES[depart] ,false , filter_courses_callback, filters); 
@@ -27,21 +27,26 @@ function filter_courses_callback(filters){
         console.log('hichi peida nashod darim return mikonim ' ); 
         return [] ; 
     }
+    console.log( 'courses right here are ' , courses ) ; 
     courses = sectionFilters(courses,filters); 
 //    if (courses.length>0 && courses[0].PRIORITY !=undefined){
 //        courses = courses.sort(function(current, next){
 //            return current.PRIORITY - next.PRIORITY;});
 //    }
+    
+    console.log( 'courses that passed all the filters are ' , courses) ; 
     initialStage = courses ; 
     renderCourses(courses) ; 
-    localStorage.CurrentFilter = filters;
+    localStorage.CurrentFilter = JSON.stringify(filters);
 
 }
 
 function alterFilter(filter , value) {
     var currentFilter = JSON.parse(localStorage.CurrentFilter) ; 
     currentFilter[filter] = value ; 
+    
     filter_courses(currentFilter) ; 
+    
 }
 
 function keyword_search(keywords){
@@ -81,6 +86,8 @@ function courseFilters(filters){
 }
 
 function sectionFilters(courses,filters){
+    console.log( 'hello we are in section sfilter and filters are ' , filters , ' courses are ' , courses) ; 
+    
     var MyFilters = [] , selectedCourses = [] ; 
 
     if (filters.WeekDays !=undefined)
@@ -217,7 +224,10 @@ function passWeekDays(sections , filter){
     }
 
     function isSuperset(arr2, arr1){ 
-        return arr2.every(function (val) { return arr1.indexOf(val) >= 0; });
+        console.log( ' comparing arr1= ' , arr1 , ' and arr2 ' , arr2 ) ;
+        var r = arr2.every(function (val) { return arr1.indexOf(val) >= 0; });
+        console.log ( 'the answer was ' , r ) ; 
+        return r ; 
     }
     
     var weekDays = filter.WeekDays; 
