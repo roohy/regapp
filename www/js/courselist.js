@@ -136,7 +136,7 @@ function renderCourses(course_list){
         return location ; 
     }
     
-    console.log('in rendering coursessssssss ' , course_list);
+  //  console.log('in rendering coursessssssss ' , course_list);
     localStorage['CurrentSelection'] = JSON.stringify(course_list); 
     
     $('#course-list').empty();
