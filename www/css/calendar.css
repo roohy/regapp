@@ -31,3 +31,37 @@ td {
     padding: 0;
     position: relative;
 }
+
+
+.course-card{
+    border-color: #d2d2d2;
+    box-shadow: 0 1px 0 #cfcfcf;
+    border-radius: 3px;
+}
+.class-details{
+    
+}
+.course-title{
+    font-weight: bold;
+    display: block;
+}
+.class-description{
+    padding: 1em;
+}
+
+table{
+    text-size: small;
+}
+.unitDiv{
+    width: 50%;
+    padding: 0.5em;
+    
+}
+.unitDiv select{
+    font-size: small;
+    width: 50%;
+}
+.unitDiv .ui-select, .unitDiv label{
+    display: inline;
+    font-size: small;
+}
