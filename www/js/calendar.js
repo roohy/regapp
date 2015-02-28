@@ -1,4 +1,4 @@
-var datesInt = {'M':1 , 'T':2,'W':3,'H':4};
+var datesInt = {'M':1 , 'T':2,'W':3,'H':4 , 'F':5 , 'S':6 , 'U':0 };
 var calendarTable = '#calendarTable';
 
 function addToCalendar(startTime,endTime, dates){ //13:30
@@ -65,6 +65,28 @@ function initialize(){
         if ($(this).attr('id') == 'regButton')
             registerConfirmation();
     });
+    $ ('#regConPopup #yes-button').click(function(){
+       registerAll();
+        
+        
+    }); 
+    
+//    $('#regButton').click(function(){alert('haha');}) ; 
+}
+
+function registerAll(){
+    $('#regConPopup').popup('close');
+    var myScheduledClasses = JSON.parse(localStorage.SCHEDULED_CLASSES); 
+    RegisterCourses(myScheduledClasses);
+    //Roohy message = "Your courses have been registered successfuly" 
+    
+    // bayad oono tabdil koni be unregistered 
+    for ( var i in myScheduledClasses){
+        var section = myScheduledClasses[i] ; 
+        button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
+        button.html('Unregister') ; 
+        button.attr('value' , 'unregister'); 
+    }
 }
 
 function setGraded(){
@@ -209,9 +231,6 @@ function renderCourses(section){
     tbody2.append(tr2);
     table2.append(thead2) ; 
     table2.append(tbody2);
-//            var add_bottun = $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');               
-//
-//            add_bottun.button();
 
     row.append(table); 
     row.append(table2) ; 
@@ -221,18 +240,58 @@ function renderCourses(section){
     class_details.append(class_secions);
     card.append(class_details) ;
 
-  //  $('<button class="btn  btn-danger ui-btn ui-shadow ui-corner-all">Add</button>');
     
-   // var scheduleButton = $('<button class="schedButton">Schedule</button>');
-    var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all">Schedule</button>');
-    var registerButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all">Register</button>');
-    scheduleButton.button(); 
-    registerButton.button(); 
+    var scheduleButton = $('<button class="schedButton btn  btn-danger ui-btn ui-shadow ui-corner-all" value="schedule">Schedule</button>');
+   
+    scheduleButton[0].__section = section ;
+//    scheduleButton[0].sectionID = section.SECTION_ID ;
+   scheduleButton.attr('sectionID' , section.SECTION_ID) ; 
+     scheduleButton.button(); 
+    scheduleButton.click(function(event){
+        e = event ; 
+        ClassButtonClicked(event.target.__section , event.target.getAttribute('value') , event.target); 
+    });
+    
+    
     card.append(scheduleButton) ; 
-    card.append(registerButton) ; 
     
     $("#calendar_course-list").append(card);
 }
+
+function ClassButtonClicked(section , value , element){
+    console.log('hello? section is ' , section); 
+    if ( value == "schedule"){
+        var result = scheduleClass(section); 
+        //Roohy message = result[1]; 
+        if ( result[0] == true){
+            console.log( 'scheduled successfuly ') ; 
+            element.innerText = 'Uneschedule';
+            element.setAttribute('value' , 'unschedule'); 
+            if (section.BEGIN_TIME ==null || section.END_TIME ==null || section.DAY == null){
+                return; 
+            }
+            var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
+            //Roohy element.setAttribute(__dom, domObject); 
+        }
+    }
+    else if(value == 'unschedule'){
+        unscheduleClass(section) ; 
+        element.innerText = 'Schedule';
+        element.setAttribute('value' , 'schedule'); 
+        // Roohy element.__dom.hide() or whatever the function is!!!! 
+        //Roohy message = "Section has been unscheduled"
+    }
+    else if (value == 'unregister'){
+        unRegistereClass(section) ; 
+        unscheduleClass(section) ; 
+        element.innerText = 'Schedule';
+        element.setAttribute('value' , 'schedule'); 
+        // Roohy message = "Section was successfuly unregistered" 
+    }
+    else
+        alert( ' value was something not expected : ' + value ) ; 
+}
+
 
 
 $(function(){
@@ -242,7 +301,7 @@ $(function(){
     initialize(); 
     setGraded(); 
     
-    var test = {"SECTION_ID":17554,"TERM_CODE":"20151","COURSE_ID":10514,"TITLE":"title e alakiiii " , "SIS_COURSE_ID":"FAPT-105","MIN_UNITS":4.0,"MAX_UNITS":4.0,"NAME":null,"SECTION":"33217D","SESSION":"001","TYPE":"Lecture-Lab","BEGIN_TIME":"09:00","END_TIME":"11:50","DAY":"TH","LOCATION":"HAR203","REGISTERED":null,"INSTRUCTOR":"Liebowitz, Karen","SEATS":18,"ADD_DATE":"2014-05-19T00:00:00","CANCEL_DATE":null,"PUBLISH_FLAG":"Y","PUBLISH_SECTION_FLAG":"Y","V_SOC_COURSE":null}
+    var test = {"SECTION_ID":17554,"TERM_CODE":"20151","COURSE_ID":10514,"TITLE":"title e alakiiii " , "SIS_COURSE_ID":"FAPT-105","MIN_UNITS":4.0,"MAX_UNITS":4.0,"NAME":null,"SECTION":"33217D","SESSION":"001","TYPE":"Lecture-Lab","BEGIN_TIME":"09:00","END_TIME":"11:50","DAY":"TH","LOCATION":"HAR203","REGISTERED":null,"INSTRUCTOR":"Liebowitz, Karen","SEATS":18,"ADD_DATE":"2014-05-19T00:00:00","CANCEL_DATE":null,"PUBLISH_FLAG":"Y","PUBLISH_SECTION_FLAG":"Y","V_SOC_COURSE":null};
     
     renderCourses(test);
     
