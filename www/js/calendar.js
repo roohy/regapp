@@ -68,9 +68,11 @@ function initialize(){
     });
     $ ('#regConPopup #yes-button').click(function(){
        registerAll();
-        
-        
     }); 
+    
+    $ ('#regConPopup #cancel-button').click(function(){
+        $('#regConPopup').popup('close');
+    });
     
 //    $('#regButton').click(function(){alert('haha');}) ; 
 }
@@ -233,12 +235,14 @@ function renderCourses(section){
 //    scheduleButton[0].sectionID = section.SECTION_ID ;
    scheduleButton.attr('sectionID' , section.SECTION_ID) ; 
    removeButton.attr('sectionID' , section.SECTION_ID) ; 
-     scheduleButton.button(); 
+    scheduleButton.button(); 
+    removeButton.button(); 
     scheduleButton.click(function(event){
+        console.log( 'sdfafsafsafasfdsafs') ; 
         e = event ; 
         ClassButtonClicked(event.target.__section , event.target.getAttribute('value') , event.target); 
     });
-    scheduleButton.click(function(event){
+    removeButton.click(function(event){
         removeFromCourseBin(event.target.getAttribute('sectionID'));
         $('#calendar_course-list').empty();
         var myCourseBin = JSON.parse(localStorage.COURSE_BIN); 
@@ -271,6 +275,9 @@ function ClassButtonClicked(section , value , element){
             }
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
             element.__dom = domObject; 
+        }
+        else{
+            console.log(result[1]) ; 
         }
     }
     else if(value == 'unschedule'){
