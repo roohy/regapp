@@ -244,15 +244,23 @@ function renderCourses(section){
     var kk ; 
     var kk2 ; 
     var flag  = false ; 
+    var flag2 = false ; 
+    if ( localStorage.REGISTERED !=undefined){
     if ( isIn(section, JSON.parse(localStorage.REGISTERED)) == true){
               kk = "Unregister";
               kk2 = "unregister";
+        flag2 = true  ;
+        
               }
-    else if(isIn(section, JSON.parse(localStorage.SCHEDULED_CLASSES)) == true){
+    }
+    if (localStorage.SCHEDULED_CLASSES !=undefined){
+        if(isIn(section, JSON.parse(localStorage.SCHEDULED_CLASSES)) == true){
             kk = "Unschedule" ; 
         kk2 = 'unschedule' ;
+            flag2 = true ; 
         }
-    else {
+    }
+    if (flag2 == false) {
         kk = 'Schedule' ; 
         kk2 = 'schedule' ;
         flag = true ; 
