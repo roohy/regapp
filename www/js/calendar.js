@@ -52,6 +52,7 @@ function addToCalendar(startTime,endTime, dates){ //13:30
         console.log(result.position());
         console.log(result.height());
         console.log("day is "+day);
+        return result;
     }
     
 }
@@ -254,14 +255,16 @@ function ClassButtonClicked(section , value , element){
                 return; 
             }
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
-            //Roohy element.setAttribute(__dom, domObject); 
+            element.__dom = domObject; 
         }
     }
     else if(value == 'unschedule'){
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
         element.setAttribute('value' , 'schedule'); 
-        // Roohy element.__dom.hide() or whatever the function is!!!! 
+        element.__dom.hide() ///or whatever the function is!!!!
+        $('#donePopup').popup('open', {transtion:'pop'});
+        setTimeout(funtion(){$('#donePopup').popup('close');},1500);
         //Roohy message = "Section has been unscheduled"
     }
     else if (value == 'unregister'){
