@@ -338,7 +338,7 @@ $(function(){
 
 
 function showMessage(message){
-    $('#messagePopup p').html('message');
+    $('#messagePopup p').html(message);
     $('#messagePopup').popup('open',{transition: 'pop'});
     setTimeout(function(){$('#messagePopup').popup('close');},1500);
 }
