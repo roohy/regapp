@@ -35,8 +35,9 @@ function addToCourseBin(section){
 
 function scheduleClass(section){
     function sectionIntersection(section , section2){
-        var days1 = section.DAY ; 
-        var days2 = section2.DAY; 
+        console.log( 'tabe avalie : section ' , section , '      ' , section2);
+        var days1 = section.DAY.split('') ; 
+        var days2 = section2.DAY.split(''); 
         var commonDays = days1.filter(function(value) { 
                                    return (days2.indexOf(value)>-1);
                                     });
@@ -56,6 +57,8 @@ function scheduleClass(section){
     }
     
     function hasIntersection(section , sections_list){
+        
+        console.log( ' has intersection : :::: ' , section , '   ' , sections_list);
         for ( var s in sections_list){
             se = sections_list[s] ;
             if (sectionIntersection(se , section) == true){

@@ -8,10 +8,6 @@ $(function(){
         window.location = ("./departments.html");
 //        return false;
 });
-    /*$('div').live('pagebeforeshow',function(){
-        alert("I am killing it");
-        window.location = ("./departments.html");
-    });*/
 }); 
 function setTerms(data){
     if ( localStorage['ACTIVE_TERMS']== undefined)
@@ -34,13 +30,3 @@ function setTerms(data){
     
 }
 
-
-
-
-
-//
-//<ul data-role="listview" id="termList">
-//    <li><a href="#">Fall 2014</a></li>
-//    <li><a href="#">Spring 2015</a></li>
-//    <li><a href="#">Summer 2015</a></li>
-//</ul>
