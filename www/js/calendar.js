@@ -261,7 +261,8 @@ function ClassButtonClicked(section , value , element){
     console.log('hello? section is ' , section); 
     if ( value == "schedule"){
         var result = scheduleClass(section); 
-        //Roohy message = result[1]; 
+        message = result[1]; 
+        showMessage(message);
         if ( result[0] == true){
             console.log( 'scheduled successfuly ') ; 
             element.innerText = 'Uneschedule';
@@ -318,3 +319,10 @@ $(function(){
     
     
 });
+
+
+function showMessage(message){
+    $('#messagePopup p').html('message');
+    $('#messagePopup').popup('open',{transition: 'pop'});
+    setTimeout(function(){$('#messagePopup').popup('close');},1500);
+}
