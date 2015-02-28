@@ -111,3 +111,9 @@ li.list-group-item.nav-item{
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, .ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit,.ui-shadow,a.menu-icon.ui-link.ui-btn-left.ui-btn.ui-icon-grid.ui-btn-icon-left.ui-shadow.ui-corner-all,a.menu-icon.ui-btn-right.ui-link.ui-btn.ui-icon-gear.ui-btn-icon-left.ui-shadow.ui-corner-all{
     text-shadow: initial;
 }
+
+
+
+.ui-header .menu-icon{
+    margin-top: 0.5em;
+}

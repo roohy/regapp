@@ -184,7 +184,7 @@ function renderCourses(section){
     var class_section2 = $('<div class="class-section">'); 
     var row = $('<div class=" row"></div>');
     var table = $('<table class="table"></table>'); 
-    var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
+    var thead = $('<thead class="headed"><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
     var tbody = $('<tbody></tbody>') ; 
     var tr = $('<tr></tr>') ;
     var td1 = $('<td>'+ section.SECTION+ '</td>') ;
