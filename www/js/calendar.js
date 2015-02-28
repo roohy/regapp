@@ -74,20 +74,7 @@ function initialize(){
 //    $('#regButton').click(function(){alert('haha');}) ; 
 }
 
-function registerAll(){
-    $('#regConPopup').popup('close');
-    var myScheduledClasses = JSON.parse(localStorage.SCHEDULED_CLASSES); 
-    RegisterCourses(myScheduledClasses);
-    //Roohy message = "Your courses have been registered successfuly" 
-    
-    // bayad oono tabdil koni be unregistered 
-    for ( var i in myScheduledClasses){
-        var section = myScheduledClasses[i] ; 
-        button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
-        button.html('Unregister') ; 
-        button.attr('value' , 'unregister'); 
-    }
-}
+
 
 function renderCourses(section){
     function getUnitString(mycourse){
@@ -278,7 +265,7 @@ function ClassButtonClicked(section , value , element){
         //Roohy message = "Section has been unscheduled"
     }
     else if (value == 'unregister'){
-        unRegistereClass(section) ; 
+        unRegisterClass(section) ; 
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
         element.setAttribute('value' , 'schedule'); 

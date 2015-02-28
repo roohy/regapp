@@ -188,30 +188,9 @@ function passTime(sections , filter){
 
 }
     
-//    
-//function passProf(sections , filter){
-//    console.log('pass proff'); 
-//    function getInstructor(sec){
-//        return sec['INSTRUCTOR'].toLowerCase() ;  
-//    }
-//    
-//    var professor = filter.Professor.toLowerCase(); 
-//    var result = [] ; 
-//    for (var i in sections){
-//        var section = sections[i]; 
-//        var instructor = getInstructor(section) ; 
-//        if ( instructor !=null && instructor.search(professor)!=-1)
-//            result.push(section); 
-//    }
-////    course['V_SOC_SECTION'] = result ;
-////    return [result.length>0 , course] ; 
-//    return result ; 
-//}
-
-
 function passWeekDays(sections , filter){
     
-    console.log('pass week days filter with sections ' , sections , ' and filters ' , filter); 
+  //  console.log('pass week days filter with sections ' , sections , ' and filters ' , filter); 
     function extractDays(inp){
         var list = ['M', 'T', 'W', 'H', 'F','S','U'] ; 
         var result = [] 
@@ -224,9 +203,9 @@ function passWeekDays(sections , filter){
     }
 
     function isSuperset(arr2, arr1){ 
-        console.log( ' comparing arr1= ' , arr1 , ' and arr2 ' , arr2 ) ;
+      //  console.log( ' comparing arr1= ' , arr1 , ' and arr2 ' , arr2 ) ;
         var r = arr2.every(function (val) { return arr1.indexOf(val) >= 0; });
-        console.log ( 'the answer was ' , r ) ; 
+   //     console.log ( 'the answer was ' , r ) ; 
         return r ; 
     }
     
