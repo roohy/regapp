@@ -95,3 +95,8 @@ tr.headed td{
 }
 
 /*----------------------*/
+
+#contents h2{
+    font-size: 2em;
+    color: #E74C3C;
+}

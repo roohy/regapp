@@ -259,7 +259,7 @@ function initializeSearchComponents(){
         keyword_search(keyWords);     
         });
     
-    $('#navbar').append(navbar);
+    $('#header').append(navbar);
     
     //initializing the time picker
      $('#start-time').mobiscroll().time({

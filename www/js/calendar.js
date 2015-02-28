@@ -52,6 +52,7 @@ function addToCalendar(startTime,endTime, dates){ //13:30
         console.log(result.position());
         console.log(result.height());
         console.log("day is "+day);
+        return result;
     }
     
 }
@@ -184,7 +185,7 @@ function renderCourses(section){
     var class_section2 = $('<div class="class-section">'); 
     var row = $('<div class=" row"></div>');
     var table = $('<table class="table"></table>'); 
-    var thead = $('<thead ><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
+    var thead = $('<thead class="headed"><tr class="info"><td>Code</td><td>Type</td><td>Instr.</td><td>Place</td></tr></thead>'); 
     var tbody = $('<tbody></tbody>') ; 
     var tr = $('<tr></tr>') ;
     var td1 = $('<td>'+ section.SECTION+ '</td>') ;
@@ -254,14 +255,16 @@ function ClassButtonClicked(section , value , element){
                 return; 
             }
             var domObject = addToCalendar(section.BEGIN_TIME , section.END_TIME , section.DAY.split('')); 
-            //Roohy element.setAttribute(__dom, domObject); 
+            element.__dom = domObject; 
         }
     }
     else if(value == 'unschedule'){
         unscheduleClass(section) ; 
         element.innerText = 'Schedule';
         element.setAttribute('value' , 'schedule'); 
-        // Roohy element.__dom.hide() or whatever the function is!!!! 
+        element.__dom.hide() ///or whatever the function is!!!!
+        $('#donePopup').popup('open', {transtion:'pop'});
+        setTimeout(funtion(){$('#donePopup').popup('close');},1500);
         //Roohy message = "Section has been unscheduled"
     }
     else if (value == 'unregister'){
