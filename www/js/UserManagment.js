@@ -127,9 +127,12 @@ function RegisterCourses(sections){
 }
 
 function unRegisterClass(section){
-    button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
+    button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
     button.html('Schedule') ; 
     button.attr('value' , 'schedule'); 
+    button = $("#calendar_course-list button.remButton[sectionID=" +"'" + section.SECTION_ID+ "']")  ;
+    button.button("enable");
+    
 
     var myCurrentregisteredClasses = JSON.parse(localStorage.REGISTERED );
     console.log( 'before unregistering ' , myCurrentregisteredClasses) ; 
@@ -154,7 +157,7 @@ function registerAll(){
     // bayad oono tabdil koni be unregistered 
     for ( var i in myScheduledClasses){
         var section = myScheduledClasses[i] ; 
-        button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
+        button = $("#calendar_course-list button.schedButton[sectionID=" +"'" + section.SECTION_ID+ "']")  
         button.html('Unregister') ; 
         button.attr('value' , 'unregister'); 
     }
