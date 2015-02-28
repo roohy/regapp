@@ -16,8 +16,10 @@ function alreadyExists(section , list){
         return false ; 
     }
 
+
+
 function addToCourseBin(section){
-    console.log( 'adding section '  , section , ' to the course bin ' ) ; 
+  //  console.log( 'adding section '  , section , ' to the course bin ' ) ; 
     
     if (localStorage.COURSE_BIN == undefined)
         localStorage.COURSE_BIN = JSON.stringify([]) ; 
@@ -108,6 +110,39 @@ function RegisterCourses(sections){
     localStorage.REGISTERED = JSON.stringify(myCurrentRegistered); 
 }
 
+function unRegisterClass(section){
+    button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
+    button.html('Schedule') ; 
+    button.attr('value' , 'schedule'); 
+
+    var myCurrentregisteredClasses = JSON.parse(localStorage.REGISTERED );
+    console.log( 'before unregistering ' , myCurrentregisteredClasses) ; 
+    for ( var i in myCurrentregisteredClasses){
+        var sec = myCurrentregisteredClasses[i] ; 
+        if (section.SECTION_ID == sec.SECTION_ID){
+            myCurrentregisteredClasses.splice(i,1); 
+        }
+    }
+    console.log( 'after unregistering ' , myCurrentregisteredClasses) ; 
+    localStorage.REGISTERED= JSON.stringify(myCurrentregisteredClasses) ; 
+
+    
+}
+
+function registerAll(){
+    $('#regConPopup').popup('close');
+    var myScheduledClasses = JSON.parse(localStorage.SCHEDULED_CLASSES); 
+    RegisterCourses(myScheduledClasses);
+    //Roohy message = "Your courses have been registered successfuly" 
+    
+    // bayad oono tabdil koni be unregistered 
+    for ( var i in myScheduledClasses){
+        var section = myScheduledClasses[i] ; 
+        button = $("#calendar_course-list button[sectionID=" +"'" + section.SECTION_ID+ "']")  
+        button.html('Unregister') ; 
+        button.attr('value' , 'unregister'); 
+    }
+}
 
 
 function getCourseBin(){
