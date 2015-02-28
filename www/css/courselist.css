@@ -12,14 +12,24 @@
 }
 .class-details{
    display: none;
+    font-size: 0.9em;
     
+}
+.panel-header h5{
+    font-size: 1em;
+    font-weight: bold;
+}
+.class-sections h5{
+    margin-bottom: 0.5em;
 }
 .course-title{
     font-weight: bold;
     display: block;
 }
 .class-description{
-    padding: 1em;
+    font-size: 0.9em;
+    padding-left: 1em;
+    padding-right: 0.5em;
 }
 
 table{
@@ -28,4 +38,83 @@ table{
 
 #content{
     padding: 0;
+}
+
+#coverThing{
+    z-index: 100;
+}
+#container{
+    z-index: 2;
+}
+
+.ui-header .menu-icon{
+    margin-top: 0.5em;
+}
+/*  -----------------------*/
+
+button.btn.btn-danger.ui-btn.ui-shadow.ui-corner-all {
+background-color: #E74C3C;
+color: #F1C40F;
+text-shadow: initial;
+}
+
+tr.headed td{
+    background-color: #F1C40F;
+    color: #E74C3C;
+    text-shadow: initial;
+}
+.label{
+    margin-left:0.3em;
+}
+.fui-triangle-down{
+    color: #AAAAAA;
+}
+.course-card.panel{
+    padding-bottom: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.class-section{
+    padding-bottom: 0.5em;
+}
+/*  -----------------------*/
+#nav-panel-right .header{
+    
+}
+#nav-panel-right .header-filter{
+    font-size: 0.9em;
+    display: inline-block;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}/*
+#time-container .header-filter{
+    float: left;
+}
+#time-container input{
+    display: inline-block;
+    float:right;
+    width: 30%;
+}*/
+#department-list{
+    font-size: 0.7em;
+}
+
+#nav-panel-right .ui-checkbox{
+    margin:0;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 0.3em;
+    border-radius: 0;
+}
+
+#nav-panel-right .ui-checkbox label.ui-btn.ui-btn-active{
+    background-color: #E74C3C;
+    border-color: #C0392B;
+    color: #F1C40F;
+    
+}
+span.checkSpan{
+    display: inline-block;
+    width: 1em;
 }
